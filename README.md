@@ -1,7 +1,7 @@
 # Binout
 Matlab functions to work with LS-DYNA `binout` files. The function `get_binout_data()` (called the binout reader) is the one that reads the binout file.
 The function `get_d3plot_d3thdt_control_data()` is a helper function that is called (internally) from within the binout reader function.
-The function `struct2graph()` is a standalone function that takes a MATALB (nested) `struct` and produces figures showing the hierarchy map (structured graphs), as a convenient means of to easily see what fields are available in such `struct`.
+The function `struct2graph()` is a standalone function that takes a MATALB (nested) `struct` and produces figures showing the hierarchy map (structured graphs), as a convenient means to easily see what fields are available in such `struct`.
 
 ## binout reader
 ### What it does?
