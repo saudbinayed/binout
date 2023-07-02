@@ -21,8 +21,11 @@ The formal syntax is
 `binin` = structure containing all the data in the `binout` file(s). Type: MATLAB scalar structure [`struct`]. 
 
 This is a highly nested structure. Use the "." (dot) indexing method in MATLAB to traverse the `binin` structure to arrive at a data of interest. 
-The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last `n`<sup>th</sup> field (when available) is called "control".
-Every root field is itself a scaler structure. Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data". For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain itermediate fields like "shell". In this case, the "metadata" and "data" structures are fields of "binin.elout.shell".
+The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control".
+Every root field is itself a scaler structure. 
+
+Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data". For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell". In this case, the "metadata" and "data" structures are fields of "binin.elout.shell".
+
 The "data" structure has fields whose names are borrowed directly from the original `binout` file. The values associated with these fields are the actual data of interest. The naming of the fields are practically self-explainatory.
 The "metadata" structure is similar to the "data" (described above), and it contains mostly meta-data and few important data, namely the id's of parts, nodes, etc. The id's are usually stored in the "ids" field of the "metadata" structure.
 The root field "control" under the `binin` structure contains supplementary control data retrieved from the root `d3plot` file, which is provided through (internally) calling the `get_d3plot_d3thdt_control_data()` helper function. The binout reader function will auto-detect the root d3plot file. Among the control data retrieved is the element-node connectivity arrays and some others like the initial geometry.
