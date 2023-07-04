@@ -44,11 +44,31 @@ The root field "control" under the `binin` structure contains supplementary cont
 (internally) calling the `get_d3plot_d3thdt_control_data()` helper function. The binout reader function will auto-detect the root d3plot file. 
 Among the control data retrieved is the element-node connectivity arrays and some others like the initial geometry.
 
+#### important notes
+The values of the fields of the "data" structure are in general 2D arrays except "time" (which is always a column vector). Rows of the 2D arrays correspond to 
+time instants (so that the number of rows equal the number of entries of the time vector). The columns of the 2D arrays correspond to the IDs of the entities
+(like parts, nodes, etc). The ids of the entities are (generally) stored in the field "ids" in the "metadata" structure; as exceptions, the ids of elements and
+contacts are stored in the fields "ids" in the "data" structure itself (this is due to LS-DYNA). 
+
+Almost all the fields in "data" and "metadata" are named explicitly and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
+As exceptions, the fields in the "data" structure for the substructures of "elout" may need interpretations since they are somtimes abbreviated. The stresses are 
+abreviated by "sig_xx", "sig_xy", etc (where "sig" stands for "sigma", the symbol commonly used for stress). Likewise, strains are indicated by "eps_xx" and so on 
+(where "eps" stands for "epsilon" for strain). The effective plastic strain is usually denoted by "yield" (for solids) or "plastic_strain" (for other elements). 
+
+Lastly, the structuring and naming of fields are exactly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
+then there is no need to make further explaination since (in this case) the `binin` structure should be very familiar too. 
+
 #### optional
 If needed, one can use the standalone function `struct2graph()` to visually display the hierarchy map of the `binin` structure. The function accepts 
 a scalar (possibly highly nested) MATLAB structure as the first input argument, and it produces the figures and returns their handles as output. 
 If this is your first time, provide the second input argument (called `labelQ`) with value equals to `"All"` so that every root sub-structure (under the `binin`) 
 gets displayed in a seperate figure that shows all the terminal fields under "data" and "metadata". The input `struct` can be nested with arbitrary depth.     
+
+
+#### final remarks
+The aim of the work presented herein is to make working with LS-DYNA results easier for engineers and researchers, so please let us know if you encounter any 
+problems or if you need additional clarifications about how to make this work in real use.  
+
 
 ## Contributions
 This work is part of a PhD study at the [Blast and Impact Engineering Research Group](https://twitter.com/SheffieldBlast), 

@@ -64,13 +64,15 @@ for j0=1:length(family)
         A1=fread(fid,A0-4,'uint8');
         address=address+A0;
         A2=char(A1);
-        if A1(9-4)==2 && (A1(10-4)==47 || all(A2(10-4:12-4)=='../'))
+        if A1(9-4)==2 && (A1(10-4)==47 || all(A2(10-4:12-4)'=='../'))
             dir0=A2(10-4+1:end)';
             if startsWith(dir0,'./')
-                warning('expecting previously visited directory! address is %d.\n\tCurrent directory is %s. Previously known directory is %s',address,dir0,last_dir);
-                %todo:
-                last_dir=last_dir(1:find(last_dir,'/',1,'last')-1);
-                dir0(1:2)=[];
+                dir0=A2(10-4:end)';
+                refCounts=count(dir0,'../');
+                for i0=1:refCounts
+                    last_dir=last_dir(1:find(last_dir=='/',1,'last')-1);
+                    dir0(1:3)=[];
+                end
                 dir0=[last_dir,'/',dir0];
             end
             last_dir=dir0;
