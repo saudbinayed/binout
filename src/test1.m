@@ -180,24 +180,30 @@ end
 %%
 elout=binin.elout.shell.data;
 
-t=elout.time; % time vector of elout database
+t2=elout.time; % time vector of elout database
 pres=-(elout.sig_xx+elout.sig_yy+elout.sig_zz)/3; % pressure (+ve: compression)
 [~,eids]=find(connec(1:4,:)==nid); % elem ids sharing node nid
 presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrounding elems
 
 figure(5); clf; cla;
-fig=gcf; ax=gca;
+fig=gcf;  ax=gca;
 
-plot(ax,t,presq)
+yyaxis(ax,"left");
+plot(ax,t2,presq)
 txt=compose('P Node %d',nid);
 text(ax,0.01e-3,0,{'\uparrow compression'},'Units','data','FontSize',7,'Interpreter','tex','HorizontalAlignment','left','VerticalAlignment','bottom');
 text(ax,0.01e-3,0,{'\downarrow tension'},'Units','data','FontSize',7,'Interpreter','tex','HorizontalAlignment','left','VerticalAlignment','top');
+ylabel(ax,'Pressure [Pa]');
+
+yyaxis(ax,"right");
+ydata=-nodout.y_velocity(:,nid);
+plot(ax,t,ydata);
+txt(end+1)=compose('$\\dot{u}_y$ Node %d',nid);
+ylabel(ax,'Velocity [m/s]');
 
 legend(ax,txt);
 xlabel(ax,'Time [s]');
-ylabel(ax,'Pressure [Pa]');
 set(ax.XAxis,'Exponent',-3,'TickLabelFormat','%.2f');
-set(ax.YAxis,'Exponent',6,'TickLabelFormat','%.1f');
 ax=tidyAxes(ax);
 
 
@@ -219,7 +225,7 @@ set(axIn,'XMinorTick','on','YMinorTick','on','TickDir','in');
 set(axIn,'FontName','Times','FontSize',10);
 set([axIn.XAxis.Label,axIn.YAxis.Label],'Interpreter','latex');
 set(axIn,'Box','on');
-set([axIn.Children],'LineWidth',0.75);
+set([allchild(axIn)],'LineWidth',0.75);
 %
 % remove un-needed white space (margins):
 posTight=tightPosition(axIn,IncludeLabels=true);
