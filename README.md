@@ -4,7 +4,7 @@ The function `get_d3plot_d3thdt_control_data()` is a helper function that is cal
 The function `struct2graph()` is a standalone function that graphically displays content (or fields) of a nested MATALB `struct`. The MATLAB source files of 
 the functions are in the [`src`](/src/) folder.
 
-For convenience, sample LS-DYNA files are provided in the [`LS-DYNA sample`](/"LS-DYNA sample"/) folder. You can download these files and use the MATLAB script `test1.m` in the `src` folder to get started. 
+For convenience, sample LS-DYNA files are provided in the [`LS-DYNA sample`](/LS-DYNA-sample/) folder. You can download these files and use the MATLAB script `test1.m` in the `src` folder to get started. 
 
 ## binout reader
 ### What it does?
