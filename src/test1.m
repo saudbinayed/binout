@@ -66,7 +66,7 @@ uy=nodout.y_displacement(:,idq); % y-displacement time-history at nid
 vy=nodout.y_velocity(:,idq); % y-velocity ...
 
 figure(2); clf; cla;
-fig=gca; ax=gca;
+fig=gcf; ax=gca;
 plot(t,uy);
 txt=compose('$u_y$ Node %d',nid);
 
