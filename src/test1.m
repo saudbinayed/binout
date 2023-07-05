@@ -34,14 +34,14 @@ xlabel(ax,'Time [s]');
 ylabel(ax,'Energy [N.m]');
 set(ax.XAxis,'Exponent',-3,'TickLabelFormat','%.2f');
 set(ax.YAxis,'TickLabelFormat','%.1f');
-ax=tidyAxes(ax);
+ax=tidyAxes(ax); % local fun, given at the bottom of this script
 
 folderName='../figs';
 if exist(folderName,'dir')==0
     mkdir(folderName);
 end
 figFileName=[folderName,'/','energies'];
-fig=printFig(fig,figFileName,["pdf","svg"]);
+fig=printFig(fig,figFileName,["pdf","svg"]); % another local fun, given at the bottom of this script
 
 
 
