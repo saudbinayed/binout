@@ -204,7 +204,7 @@ if nargin<3 || (nargin==3 && isempty(fmt))
     fmt="pdf";
 end
 fmt=string(fmt);
-filename=erase(filename,regexpPattern('(?<=\.)[a-zA-Z0-9]+$'));
+filename=erase(filename,regexpPattern('\.[a-zA-Z0-9]+$'));
 filename=char(filename);
 %
 if any(fmt=="pdf")
