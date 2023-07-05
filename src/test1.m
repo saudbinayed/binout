@@ -54,7 +54,7 @@ y0=nodout.y_coordinate(1,:)'; % ... y-coordinate
 
 % search for node nearest to (xq,yq)
 xq=0.5;
-yq=0.21;
+yq=0.2;
 [~,idq]=min(sqrt((x0-xq).^2+(y0-yq).^2));
 idq=idq(1); 
 xq=x0(idq); yq=y0(idq); % actual coordinate of node
@@ -170,6 +170,35 @@ for i=1:length(Im)
         imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.2);
     end
 end
+
+
+
+%%
+elout=binin.elout.shell.data;
+
+t=elout.time; % time vector of elout database
+pres=-(elout.sig_xx+elout.sig_yy+elout.sig_zz)/3; % pressure (+ve: compression)
+[~,eids]=find(connec(1:4,:)==nid); % elem ids sharing node nid
+presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrounding elems
+
+figure(5); clf; cla;
+fig=gcf; ax=gca;
+
+plot(ax,t,presq)
+txt=compose('P Node %d',nid);
+
+legend(ax,txt);
+xlabel(ax,'Time [s]');
+ylabel(ax,'Pressure [Pa]');
+set(ax.XAxis,'Exponent',-3,'TickLabelFormat','%.2f');
+set(ax.YAxis,'Exponent',6,'TickLabelFormat','%.1f');
+ax=tidyAxes(ax);
+
+
+
+
+
+
 
 
 
