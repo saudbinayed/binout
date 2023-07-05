@@ -101,8 +101,11 @@ ax=nexttile;
 axis(ax,"equal");
 xlim([min(x,[],"all"),max(x,[],"all")]);
 ylim([min(y,[],"all"),max(y,[],"all")]);
+fig.Units='centimeters';
+ax.Units='centimeters'; 
 axPos=ax.tightPosition(IncludeLabels=true);
-fig.Position(4)=fig.Position(4)*(axPos(4)/axPos(3));
+fig.Position(3:4)=axPos(3:4);
+
 
 
 xlabel(ax,'x-coordinate [m]');
@@ -118,6 +121,7 @@ pa.FaceVertexCData=vResultant(1,:)';
 colormap(ax,'turbo');
 cb=colorbar(ax); cb.Label.set('String',[colorVar,' [m/s]'],'Interpreter','none');
 cb.Layout.Tile='east';
+clim(ax,[min(vResultant,[],"all"),max(vResultant,[],"all")]);
 txt=compose('Time = %7.6f [s]',t(1));
 te=text(0.02,1,txt,'FontSize',8,'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top');
 
@@ -144,8 +148,8 @@ frameAspectRatio=size(F(1).cdata,1)/size(F(1).cdata,2);
 
 figure(4); clf; cla;
 fig=gcf; delete(gca());
-fig.Position(4)=fig.Position(4)*(frameAspectRatio);
-movie(fig,F,2,10);
+fig.Position(4)=fig.Position(3)*(frameAspectRatio);
+movie(fig,F,2,10,[0 0 0 0]);
 videosFolder='../videos';
 if exist(videosFolder,'dir')==0
     mkdir(videosFolder);
@@ -163,7 +167,7 @@ for i=1:length(Im)
     if i==1
         imwrite(A,map,[videoFileName,'.gif'],'LoopCount',Inf,'DelayTime',0.5);
     else
-        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.25);
+        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.2);
     end
 end
 

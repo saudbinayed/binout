@@ -26,3 +26,7 @@
 *.pdf binary
 *.png binary
 *.xlsx binary
+
+## LS-DYNA binary
+*d3plot
+*binout
