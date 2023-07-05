@@ -80,12 +80,13 @@ ax=tidyAxes(ax);
 
 
 
-%% 
-connec=binin.control.connec.shell;
-x=nodout.x_coordinate;
-y=nodout.y_coordinate;
-faces=connec(1:4,:)';
-vertices=[x(1,:)',y(1,:)'];
+%% displaying the model geometry and motion
+
+connec=binin.control.connec.shell; %element-node connectivity array for shell elems 
+x=nodout.x_coordinate; % 2D array of x-coordinate time histories of all nodes
+y=nodout.y_coordinate; % ... y-coordinate ...
+faces=connec(1:4,:)'; % for patch
+vertices=[x(1,:)',y(1,:)']; % for patch 
 
 vx=nodout.x_velocity;
 vy=nodout.y_velocity;
@@ -132,16 +133,18 @@ for i=1:frameCount
     pa.FaceVertexCData=vResultant(i,:)';
     te.String=compose('Time = %7.6f [s]',t(i));
     F(i)=getframe(fig);
-    %exportgraphics(fig,[vidoeFileName,'.gif'],"Append",true);
     Im{i}=frame2im(F(i));
     pause(1/90);
 end
 F=[F([1 1 1]),F(2:end)];
 frameAspectRatio=size(F(1).cdata,1)/size(F(1).cdata,2);
-%%
+
+
+%% saving videos and gifs
+
 figure(4); clf; cla;
 fig=gcf; delete(gca());
-% fig.Position(4)=fig.Position(3)*(frameAspectRatio);
+fig.Position(4)=fig.Position(4)*(frameAspectRatio);
 movie(fig,F,2,10);
 videosFolder='../videos';
 if exist(videosFolder,'dir')==0
