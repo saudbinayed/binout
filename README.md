@@ -71,7 +71,7 @@ problems or if you need additional clarifications about how to make this work in
 
 ## Motivations
 The work is shared for three aims:
-+ Help engineers and researchers to easily work with LS-DYNA results.
++ Help (engineers and researchers) :heart: to easily work with LS-DYNA results.
 + Enrich Matlab by affording a tool to import real-world data from world class FEA solver (LS-DYNA).
 + Extend LS-DYNA by allowing users to make use of the very powerful tools in MATLAB to perform additional post-processing calculations and generate graphics with publication-quality to share with others. 
 We hope the work will be useful.
