@@ -2,7 +2,7 @@ clear;
 close all;
 clc;
 
-binout_filename='../LS-DYNA-sample/binout';
+binout_filename='../LS-DYNA-sample/2/binout';
 binin = get_binout_data(binout_filename);
 
 %[figParents,figSelect]=struct2graph(binin,"All"); %graphically see contents of binin
@@ -16,6 +16,7 @@ ke=matsum.kinetic_energy; % kinetic energy time histories of part 1 (column 1) a
 ie=matsum.internal_energy; % internal energy
 hge=matsum.hourglass_energy; % hourglass energy
 
+
 figure(1); clf; cla; 
 fig=gcf; ax=gca;
 hold(ax,"on");
@@ -27,6 +28,9 @@ txt(end+1:end+length(Pids))=compose('IE Part %d',Pids);
 
 plot(t,hge);
 txt(end+1:end+length(Pids))=compose('HGE Part %d',Pids);
+
+% plot(binin.glstat.data.time,binin.glstat.data.total_energy,'-k'); % total energy
+% txt(end+1)={'TE'};
 
 hold(ax,'off');
 legend(ax,txt);
@@ -128,7 +132,7 @@ te=text(0.02,1,txt,'FontSize',8,'Units','normalized','HorizontalAlignment','left
 ax.NextPlot="replacechildren";
 fig.ToolBar="none";
 F=struct('cdata',[],'colormap',[]);
-frameCount=min([20,length(t)]);
+frameCount=min([120,length(t)]);
 F(frameCount)=struct('cdata',[],'colormap',[]);
 Im=cell(1,frameCount);
 
@@ -186,6 +190,8 @@ fig=gcf; ax=gca;
 
 plot(ax,t,presq)
 txt=compose('P Node %d',nid);
+text(ax,0.01e-3,0,{'\uparrow compression'},'Units','data','FontSize',7,'Interpreter','tex','HorizontalAlignment','left','VerticalAlignment','bottom');
+text(ax,0.01e-3,0,{'\downarrow tension'},'Units','data','FontSize',7,'Interpreter','tex','HorizontalAlignment','left','VerticalAlignment','top');
 
 legend(ax,txt);
 xlabel(ax,'Time [s]');
