@@ -64,11 +64,17 @@ a scalar (possibly highly nested) MATLAB structure as the first input argument, 
 If this is your first time, provide the second input argument (called `labelQ`) with value equals to `"All"` so that every root sub-structure (under the `binin`) 
 gets displayed in a seperate figure that shows all the terminal fields under "data" and "metadata". The input `struct` can be nested with arbitrary depth.     
 
-
 #### final remarks
 The aim of the work presented herein is to make working with LS-DYNA results easier for engineers and researchers, so please let us know if you encounter any 
 problems or if you need additional clarifications about how to make this work in real use.  
 
+
+## Motivations
+The work is shared for three aims:
++ Help engineers and researchers to easily work with LS-DYNA results.
++ Enrich Matlab by affording a tool to import real-world data from world class FEA solver (LS-DYNA).
++ Extend LS-DYNA by allowing users to make use of the very powerful tools in MATLAB to perform additional post-processing calculations and generate graphics with publication-quality to share with others. 
+We hope the work will be useful.
 
 ## Contributions
 This work is part of a PhD study at the [Blast and Impact Engineering Research Group](https://twitter.com/SheffieldBlast), 
