@@ -67,7 +67,7 @@ Matlab script can be found in the [figs](../figs/) and [videos](../videos/) fold
 ![Energies plot](../figs/energies.svg) 
 
 ### model animation
-![animation of small impactor hitting a stand-still large body](../videos/impactor_color_resultant_vel.gif)
+![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)
 
 
 
