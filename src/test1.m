@@ -160,7 +160,7 @@ if exist(videosFolder,'dir')==0
 end
 videoFileName=[videosFolder,'/','impact_color_resultant_vel'];
 vid=VideoWriter([videoFileName,'.mp4']);
-vid.FrameRate=4;
+vid.FrameRate=8;
 vid.Quality=90;
 open(vid);
 writeVideo(vid,F);
@@ -169,9 +169,9 @@ close(vid);
 for i=1:length(Im)
     [A,map]=rgb2ind(Im{i},256);
     if i==1
-        imwrite(A,map,[videoFileName,'.gif'],'LoopCount',Inf,'DelayTime',0.5);
+        imwrite(A,map,[videoFileName,'.gif'],'LoopCount',Inf,'DelayTime',0.2);
     else
-        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.2);
+        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.1);
     end
 end
 
@@ -205,6 +205,69 @@ legend(ax,txt);
 xlabel(ax,'Time [s]');
 set(ax.XAxis,'Exponent',-3,'TickLabelFormat','%.2f');
 ax=tidyAxes(ax);
+
+
+
+
+%%
+
+P3Nodes=connec(1:4,connec(end,:)==find(Pids==3));
+P4Nodes=connec(1:4,connec(end,:)==find(Pids==4));
+P3LB=[min(x0(P3Nodes(:))),min(y0(P3Nodes(:)))];
+P4LB=[min(x0(P4Nodes(:))),min(y0(P4Nodes(:)))];
+
+
+
+
+figure(6); clf; cla;
+fig=gcf; ax=gca;
+fig.Units='centimeters'; fig.Position(3:4)=[14,10];
+axis(ax,"equal");
+xlim([min(x,[],"all"),max(x,[],"all")]);
+ylim([min(y,[],"all"),max(y,[],"all")]);
+
+xlabel(ax,'x-coordinate [m]');
+ylabel(ax,'y-coordinate [m]');
+ax.TickDir="both";
+ax.Color='none';
+ax.set('FontSize',8);
+
+faces=connec(1:4,:)'; % for patch
+vertices=[x(1,:)',y(1,:)']; % for patch 
+
+pa =patch('Faces',faces,'Vertices',vertices,'FaceColor','flat','EdgeColor','k');
+pa.FaceVertexCData=10*connec(end,:)'; % part id
+colormap(ax,jet(4)); pa.FaceAlpha=0.8; pa.EdgeAlpha=0.5;
+
+hold(ax,'on');
+plot(ax,xq,yq,'o','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
+hold(ax,'off');     
+txt=compose(' Node %d',nid);
+fontsz=10;
+
+% adding simple shadow
+ldx=0.003;
+ldy=ldx;
+% text(ax,xq-ldx,yq-ldy,txt,'Color','k','FontWeight','bold','FontSize',fontsz,'Units','data','HorizontalAlignment','left','VerticalAlignment','middle');
+
+text(ax,xq+0.01,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz,'Units','data','HorizontalAlignment','left','VerticalAlignment','middle');
+
+% adding parts labels
+txt=compose('Part %d',Pids);
+
+text(ax,[P3LB(1);P4LB(1)]+0.01,[P3LB(2);P4LB(2)]+0.01,txt,'FontSize',fontsz,'Color','w','HorizontalAlignment','left','VerticalAlignment','bottom','Margin',4);
+ax.Units='centimeters';
+fig.Units='centimeters';
+axPos=ax.tightPosition(IncludeLabels=true);
+fig.Position(3:4)=axPos(3:4);
+ax.Position(1:2)=ax.Position(1:2)+([0 0]-axPos(1:2));
+
+fontname(fig,'Calibri');
+figFileName=[folderName,'/','initial_geometry_with_labels'];
+fig=printFig(fig,figFileName,["pdf","svg"]);
+
+
+
 
 
 
