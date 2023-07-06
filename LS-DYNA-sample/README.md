@@ -1,23 +1,23 @@
 # Example LS-DYNA files
 ## Introduction
 Given are three LS-DYNA files. `plane_strain_impact.k` is the model's input keyword file. The remaining two are binary results files.
-`binout` contains the actual output data of interest, and `d3plot` is the root d3plot file from which we retreive the input mesh data.
+`binout` contains the actual output data of interest, and `d3plot` is the root d3plot file from which we'll retreive the input mesh data.
 
 In the input model, the following result databases are requested: "matsum" and "glstat" (to get global energy data), "nodout" 
 (to get nodal results), and "elout" (to get element results), and lastly "ncforc" (to get contact force results). We set `BINARY=2` in `*database_matsum`, etc, so that results 
 are written to a `binout` file after the model was run. 
 
 ## Description of the model
-A simple input model was chosen for brevity. It consists of a small rigid impactor moving downwards with an initial velocity and hitting
-a larger deformable solid (from above), which was initially at rest. The model includes a typical (friction-less) contact definition to account for the impact event. 
+A simple input model was chosen for brevity. It consists of a small rigid impactor that is moving downward with an initial velocity and hitting
+a larger deformable solid (from above), which was initially at rest. The model includes a typical (frictionless) contact definition to account for the impact event. 
 During the impact, the initial kinetic energy of the moving impactor diminshes as partial momentum is transferred to the larger deformable body. The 
-larger body absorb part of that input energy as internal (strain) energy. The remaining energy is converted into kinetic energies that is split between
+larger body absorbs part of that input energy as internal (strain) energy. The remaining energy is converted into kinetic energies that are split between
 the two bodies (the impactor and the deformable solid). The impactor reverses the direction of its motion, and the impact event ends when the two bodies
-ultimately lose contact. The impactor departs away (with no return) with a new terminal velocity, and endless elastic waves propagations gets established
+ultimately lose contact. The impactor departs away (with no return) with a new terminal velocity, and endless elastic waves' propagations get established
 in the deformable solid.   
 
 Both the impactor and the deformable body are assumed to be solids in a state of "plane-strain". Therefore, they are modelled as 2D "shell"s in the xy-plane as
-simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.2 m, while the deformable solid is 1.0 x 0.4 m.
+a simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.2 m, while the deformable solid is 1.0 x 0.4 m.
 
 
 ## content of the `binout`
@@ -37,7 +37,7 @@ binin = get_binout_data('../LS-DYNA-sample/binout');
 ```
 
 In MATLAB, if you run `fieldnames(binin)`, you'll get a cell array of the names of the available fields of the `binin` structure. This array should be 
-`{'matsum','glstat','nodout','elout',`rcforc`,'control'}'`. Using Matlab dot-indexing (i.e. using "."), this statement: `binin.matsum` gives you all data contained 
+`{'matsum','glstat','nodout','elout','rcforc','control'}'`. Using Matlab dot-indexing (i.e. using "."), this statement: `binin.matsum` gives you all data contained 
 in the matsum database. The data are organised into two main structures: the "metadata" and the "data". The actual data are in the "data" structure. Again, 
 if you use: `fieldnames('binin.matsum.data')`, Matlab returns the names of the fields of the "data" structure, e.g. 
 the `time`, `kinetic_energy`, `internal_energy`, `hourglass_energy`, etc. 
