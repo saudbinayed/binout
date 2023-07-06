@@ -46,16 +46,18 @@ The root field "control" under the `binin` structure contains supplementary cont
 (internally) calling the `get_d3plot_d3thdt_control_data()` helper function. The binout reader function will auto-detect the root d3plot file. 
 Among the control data retrieved is the element-node connectivity arrays and some others like the initial geometry.
 
-#### important notes
+#### notes
 The values of the fields of the "data" structure are in general 2D arrays except "time" (which is always a column vector). Rows of the 2D arrays correspond to 
 time instants (so that the number of rows equal the number of entries of the time vector). The columns of the 2D arrays correspond to the IDs of the entities
-(like parts, nodes, etc). The ids of the entities are (generally) stored in the field "ids" in the "metadata" structure; as exceptions, the ids of elements and
-contacts are stored in the fields "ids" in the "data" structure itself (this is due to LS-DYNA). 
+(like parts, nodes, etc). The ids of the entities are (generally) stored in the field "ids" in the "metadata" structure. As exceptions, the IDs of elements and
+contacts are stored directly in the "data" structure itself. The columns of the 2D arrays in the "data" structures in the "elout" database (say "elout.shell") correspond to elements IDs (stored in "ids") _and_ their 
+integration points (the number of which is stored in "nip").
 
-Almost all the fields in "data" and "metadata" are named explicitly and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
-As exceptions, the fields in the "data" structure for the substructures of "elout" may need interpretations since they are somtimes abbreviated. The stresses are 
-abreviated by "sig_xx", "sig_xy", etc (where "sig" stands for "sigma", the symbol commonly used for stress). Likewise, strains are indicated by "eps_xx" and so on 
-(where "eps" stands for "epsilon" for strain). The effective plastic strain is usually denoted by "yield" (for solids) or "plastic_strain" (for other elements). 
+Again, the naming of fields in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
+As exceptions, some fields in the "data" structure for the substructures of "elout" may need interpretations as they are abbreviated. The stresses are 
+abreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"). Likewise, strains are indicated by "eps_xx" and so on ("eps" for "epsilon"). The effective plastic strain is 
+either denoted by "yield" (for "solid" and "tshell"),"plastic_strain" (for "shell") or "plastic_eps" (for "beam"). Effective von-Mises stress (if available) is denoted by "effsg".
+For shells, "upper_" and "lower_" are used as pre-fixes to refer to upper-most layer and lower-most layers. 
 
 Lastly, the structuring and naming of fields are exactly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
 then there is no need to make further explaination since (in this case) the `binin` structure should be very familiar too. 

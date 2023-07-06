@@ -153,13 +153,13 @@ frameAspectRatio=size(F(1).cdata,1)/size(F(1).cdata,2);
 figure(4); clf; cla;
 fig=gcf; delete(gca());
 fig.Position(4)=fig.Position(3)*(frameAspectRatio);
-movie(fig,F,2,10,[0 0 0 0]);
+movie(fig,F,2,20,[0 0 0 0]);
 videosFolder='../videos';
 if exist(videosFolder,'dir')==0
     mkdir(videosFolder);
 end
 videoFileName=[videosFolder,'/','impact_color_resultant_vel'];
-vid=VideoWriter([videoFileName,'.mp4']);
+vid=VideoWriter([videoFileName,'.mp4'],'MPEG-4');
 vid.FrameRate=8;
 vid.Quality=90;
 open(vid);
@@ -167,11 +167,11 @@ writeVideo(vid,F);
 close(vid);
 
 for i=1:length(Im)
-    [A,map]=rgb2ind(Im{i},256);
+    [A,map]=rgb2ind(Im{i},256,'nodither');
     if i==1
-        imwrite(A,map,[videoFileName,'.gif'],'LoopCount',Inf,'DelayTime',0.2);
+        imwrite(A,map,[videoFileName,'.gif'],'LoopCount',Inf,'DelayTime',0.1);
     else
-        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.1);
+        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.05);
     end
 end
 
@@ -262,7 +262,7 @@ axPos=ax.tightPosition(IncludeLabels=true);
 fig.Position(3:4)=axPos(3:4);
 ax.Position(1:2)=ax.Position(1:2)+([0 0]-axPos(1:2));
 
-fontname(fig,'Calibri');
+fontname(fig,'Times');
 figFileName=[folderName,'/','initial_geometry_with_labels'];
 fig=printFig(fig,figFileName,["pdf","svg"]);
 
@@ -337,7 +337,7 @@ for fmt0=fmt(ismember(fmt,["png","jpeg","jpg"]))
 end
 %
 % vector graphics
-for fmt0=fmt(ismember(fmt,["pdf","meta","eps"]))
+for fmt0=fmt(ismember(fmt,["pdf","emf","eps"]))
     figFileName=[filename,'.',char(fmt0)];
     exportgraphics(fig,figFileName,'ContentType','vector');
 end
