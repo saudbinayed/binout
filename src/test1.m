@@ -171,7 +171,7 @@ for i=1:length(Im)
     if i==1
         imwrite(A,map,[videoFileName,'.gif'],'LoopCount',Inf,'DelayTime',0.1);
     else
-        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.05);
+        imwrite(A,map,[videoFileName,'.gif'],'WriteMode',"append",'DelayTime',0.08);
     end
 end
 
