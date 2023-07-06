@@ -237,7 +237,8 @@ vertices=[x(1,:)',y(1,:)']; % for patch
 
 pa =patch('Faces',faces,'Vertices',vertices,'FaceColor','flat','EdgeColor','k');
 pa.FaceVertexCData=10*connec(end,:)'; % part id
-colormap(ax,jet(4)); pa.FaceAlpha=0.8; pa.EdgeAlpha=0.5;
+pa.FaceAlpha=0.8; pa.EdgeAlpha=0.5; pa.LineWidth=0.2;
+colormap(ax,jet(4));
 
 hold(ax,'on');
 plot(ax,xq,yq,'o','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
@@ -262,7 +263,7 @@ axPos=ax.tightPosition(IncludeLabels=true);
 fig.Position(3:4)=axPos(3:4);
 ax.Position(1:2)=ax.Position(1:2)+([0 0]-axPos(1:2));
 
-fontname(fig,'Times');
+
 figFileName=[folderName,'/','initial_geometry_with_labels'];
 fig=printFig(fig,figFileName,["pdf","svg"]);
 
