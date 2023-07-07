@@ -8,7 +8,7 @@ In the input model, the following result databases are requested: "matsum" and "
 are written to a `binout` file after the model was run. 
 
 ## Description of the model
-A simple input model was chosen for brevity. It consists of a small rigid impactor that is moving downward with an initial velocity and hitting
+A simple input model was chosen for brevity. It consists of a small rigid impactor that is moving downward with a high initial velocity and hitting
 a larger deformable solid (from above), which was initially at rest. The model includes a typical (frictionless) contact definition to account for the impact event. 
 During the impact, the initial kinetic energy of the moving impactor diminshes as partial momentum is transferred to the larger deformable body. The 
 larger body absorbs part of that input energy as internal (strain) energy. The remaining energy is converted into kinetic energies that are split between
