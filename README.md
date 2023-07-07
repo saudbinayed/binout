@@ -20,10 +20,15 @@ The formal syntax is
 ```
 [binin] = get_binout_data(binout_filename)
 ```
-#### inputs:
-`binout_filename` =  (absoulte or relative) path to the root binary `binout` file. Type: [`char`|`string`]. 
-This input argument is [Required]. If there are more than one binout file, the function is configured to auto-detect and read them sequentially. Data from 
-these files will be joined. 
+#### Inputs:
+
+
+| Arg | Type | Desc | Required? |
+|:--- |:---  |:---  |:---       |
+| `binout_filename` | [`char`\|`string`] | (relative or absolute) path of the root `binout` file | Yes
+
+
+The root `binout` file is the first if there are more than one binout file. The function is configured to auto-detect and read all files sequentially. Data from these files will be joined. 
 
 #### outputs:
 `binin` = structure containing all the data in the `binout` file(s). Type: MATLAB scalar structure [`struct`]. 
