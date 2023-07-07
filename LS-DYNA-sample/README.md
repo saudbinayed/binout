@@ -40,7 +40,7 @@ In MATLAB, if you run `fieldnames(binin)`, you'll get a cell array of the names 
 `{'matsum','glstat','nodout','elout','rcforc','control'}'`. Using Matlab dot-indexing (i.e. using "."), this statement: `binin.matsum` gives you all data contained 
 in the matsum database. The data are organised into two main structures: the "metadata" and the "data". The actual data are in the "data" structure. Again, 
 if you use: `fieldnames('binin.matsum.data')`, Matlab returns the names of the fields of the "data" structure, e.g. 
-the `time`, `kinetic_energy`, `internal_energy`, `hourglass_energy`, etc. Recall that "matsum" gives global and energy data for the parts in the model. The IDs of the parts are stored in a field called "ids" in that is found in the "metadata" structure, i.e. in `binin.matsum.metadata.ids`.
+the `time`, `kinetic_energy`, `internal_energy`, `hourglass_energy`, etc. Recall that "matsum" gives global and energy data for the parts in the model. The IDs of the parts are stored in a field called "ids" that is found in the "metadata" structure, i.e. in `binin.matsum.metadata.ids`.
 
 In particular, you can use:
 ```
