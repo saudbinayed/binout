@@ -40,7 +40,7 @@ In MATLAB, if you run `fieldnames(binin)`, you'll get a cell array of the names 
 `{'matsum','glstat','nodout','elout','rcforc','control'}'`. Using Matlab dot-indexing (i.e. using "."), this statement: `binin.matsum` gives you all data contained 
 in the matsum database. The data are organised into two main structures: the "metadata" and the "data". The actual data are in the "data" structure. Again, 
 if you use: `fieldnames('binin.matsum.data')`, Matlab returns the names of the fields of the "data" structure, e.g. 
-the `time`, `kinetic_energy`, `internal_energy`, `hourglass_energy`, etc. 
+the `time`, `kinetic_energy`, `internal_energy`, `hourglass_energy`, etc. Recall that "matsum" gives global and energy data for the parts in the model. The IDs of the parts are stored in a field called "ids" in that is found in the "metadata" structure, i.e. in `binin.matsum.metadata.ids`.
 
 In particular, you can use:
 ```
@@ -49,7 +49,7 @@ t = binin.matsum.data.time; % the time vector for matsum database
 ke = binin.matsum.data.kinetic_energy; % 2D array of kinetic energy (rows-> time states, cols-> correspond to part ids)
 ```
 to access the ids of parts, their kinetic energies, and the time vector. The 2<sup>nd</sup> column of `ke` is the time history of kinetic energy for the part
-whose id is stored in the 2<sup>nd</sup> entry of the `ids` vector.
+whose id is stored in the 2<sup>nd</sup> entry of the `ids` vector. That is, the number of columns of `ke` equals the number of entries of `ids`, and the number of rows `ke` equals the number of entries of `t`. 
 
 
 The above example for the matsum applies equally to the databases: `glstat` and `nodout`. The remaining `elout` database differs only by the presence of intermediate
