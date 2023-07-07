@@ -177,11 +177,21 @@ end
 
 
 
-%%
+%% elout
+
 elout=binin.elout.shell.data;
 
 t2=elout.time; % time vector of elout database
-pres=-(elout.sig_xx+elout.sig_yy+elout.sig_zz)/3; % pressure (+ve: compression)
+if all(elout.nip(1,:)==1)
+    % 1 integration point per elem. 
+    pres=-(elout.sig_xx+elout.sig_yy+elout.sig_zz)/3; % pressure (+ve: compression)
+else
+    % integration points per element >1
+    ipt=1; % chosen int. pt. 
+    iptIdx=(1:size(elout.ids,2)).*elout.nip(1,:)-(elout.nip(1,:)-ipt); % indices of int. pt. #(ipt) for all elems
+    pres=-(elout.sig_xx(:,iptIdx)+elout.sig_yy(:,iptIdx)+elout.sig_zz(:,iptIdx))/3; % pressure (+ve: compression)
+    fprintf(1,'Note: there are %d int. pts. per element. Chose int pt. #%d.\n',max(elout.nip(1,:)),ipt);
+end
 [~,eids]=find(connec(1:4,:)==nid); % elem ids sharing node nid
 presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrounding elems
 
@@ -198,7 +208,7 @@ ylabel(ax,'Pressure [Pa]');
 yyaxis(ax,"right");
 ydata=-nodout.y_velocity(:,nid);
 plot(ax,t,ydata);
-txt(end+1)=compose('$\\dot{u}_y$ Node %d',nid);
+txt(end+1)=compose('$-\\dot{u}_y$ Node %d',nid);
 ylabel(ax,'Velocity [m/s]');
 
 legend(ax,txt);
@@ -209,14 +219,12 @@ ax=tidyAxes(ax);
 
 
 
-%%
+%% displaying and annotating the input model
 
 P3Nodes=connec(1:4,connec(end,:)==find(Pids==3));
 P4Nodes=connec(1:4,connec(end,:)==find(Pids==4));
 P3LB=[min(x0(P3Nodes(:))),min(y0(P3Nodes(:)))];
 P4LB=[min(x0(P4Nodes(:))),min(y0(P4Nodes(:)))];
-
-
 
 
 figure(6); clf; cla;
@@ -236,7 +244,7 @@ faces=connec(1:4,:)'; % for patch
 vertices=[x(1,:)',y(1,:)']; % for patch 
 
 pa =patch('Faces',faces,'Vertices',vertices,'FaceColor','flat','EdgeColor','k');
-pa.FaceVertexCData=10*connec(end,:)'; % part id
+pa.FaceVertexCData=10*connec(end,:)'; % part id indices
 pa.FaceAlpha=0.8; pa.EdgeAlpha=0.5; pa.LineWidth=0.2;
 colormap(ax,jet(4));
 
