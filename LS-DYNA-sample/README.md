@@ -69,7 +69,7 @@ Matlab script can be found in the [figs](../figs/) and [videos](../videos/) fold
 ### kinetic energy graph
 ![Energies plot](../figs/energies.svg) 
 
-From the above figure and the time history of the kinetic energy of Part 4:
+From the above figure and the time history of the kinetic energy (KE) of Part 4:
 + The impact event had started at about $0.01\times10^{-3}$ s, since KE of Part 4 has just started to decrease. 
 + Full contact took place slightly before $0.05\times10^{-3}$ s, i.e. when KE of Part 4 instantly reaches zero.
 + Contact finsihed at $0.08\times10^{-3}$ s, when the KE curve of Part 4 becomes flat again (i.e. Part 4 motion is no longer influenced by external agencies).
