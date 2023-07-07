@@ -17,7 +17,7 @@ ultimately lose contact. The impactor departs away (with no return) with a new t
 in the deformable solid.   
 
 Both the impactor and the deformable body are assumed to be solids in a state of "plane-strain". Therefore, they are modelled as 2D "shell"s in the xy-plane as
-a simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.2 m, while the deformable solid is 1.0 x 0.4 m.
+a simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.1 m, while the deformable solid is 1.0 x 0.4 m. The two bodies are centre-aligned horizontally.
 
 
 ## content of the `binout`
