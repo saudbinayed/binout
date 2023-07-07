@@ -75,6 +75,8 @@ From the above figure and the time history of the kinetic energy (KE) of Part 4:
 + Full contact took place slightly before $0.05\times10^{-3}$ s, i.e. when KE of Part 4 instantly reaches zero.
 + Contact finsihed at $0.08\times10^{-3}$ s, when the KE curve of Part 4 becomes flat again (i.e. Part 4 motion is no longer influenced by external agencies).
 
+Note: we use the kinetic energy of a part to describe the contact because that part is a rigid body (i.e. when the y-velocity of any point is zero, then all poits have zero velocity as well. Thus, the part kinetic energy is zero). 
+
 
 ### model animation
 ![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)
