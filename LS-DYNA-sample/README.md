@@ -53,7 +53,7 @@ to access the ids of parts, their kinetic energies, and the time vector. The 2<s
 whose id is stored in the 2<sup>nd</sup> entry of the `ids` vector. That is, the number of columns of `ke` equals the number of entries of `ids`, and also the number of rows of `ke` equals the number of entries of the time vector, `t`. 
 
 
-The above example for the matsum applies equally to the databases: `glstat` and `nodout`. The remaining `elout` database differs only by the presence of intermediate
+The above example for the matsum applies equally to the databases: `glstat` and `nodout`. The `elout` database differs only by the presence of intermediate
 structure to specify the type of element, which is located immediately under the "elout". Since our example contains only "shell" elements, then the statement:
 `fieldnames('binin.elout')` will then return `{'shell'}`. The structure (`binin.elout.shell`) is the one that contains the "data" and "metadata" structures. Stresses, 
 strains, and other element quantities are stored in the "data" structure. Unlike other databases, IDs of the elements are stored in the "data" structure itself, e.g. in 
