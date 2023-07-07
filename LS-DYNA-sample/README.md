@@ -68,6 +68,7 @@ Matlab script can be found in the [figs](../figs/) and [videos](../videos/) fold
 
 ### kinetic energy graph
 ![Energies plot](../figs/energies.svg) 
+In the legend, (KE): kinetic energy, (IE): internal energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
 + The impact event had started at about $0.01\times10^{-3}$ s, since KE of Part 4 has just started to decrease. 
@@ -77,6 +78,8 @@ From the above figure and the time history of the kinetic energy (KE) of Part 4:
 
 ### model animation
 ![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)
+
+Colors correspond to values of the resultant velocity, given by $sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
 
 
 
