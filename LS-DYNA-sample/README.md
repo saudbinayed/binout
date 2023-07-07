@@ -50,7 +50,7 @@ ke = binin.matsum.data.kinetic_energy; % 2D array of kinetic energy (rows-> time
 ```
 
 to access the ids of parts, their kinetic energies, and the time vector. The 2<sup>nd</sup> column of `ke` is the time history of kinetic energy for the part
-whose id is stored in the 2<sup>nd</sup> entry of the `ids` vector. That is, the number of columns of `ke` equals the number of entries of `ids`, and also the number of rows of `ke` equals the number of entries of `t`. 
+whose id is stored in the 2<sup>nd</sup> entry of the `ids` vector. That is, the number of columns of `ke` equals the number of entries of `ids`, and also the number of rows of `ke` equals the number of entries of the time vector, `t`. 
 
 
 The above example for the matsum applies equally to the databases: `glstat` and `nodout`. The remaining `elout` database differs only by the presence of intermediate
