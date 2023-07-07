@@ -43,7 +43,7 @@ Every root field is itself a scaler structure. Some kinds of root structures wil
 
 For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on.
 
-The actual result data are contained in the "data" structure as fields, whose names are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.
+The actual result data are contained in the "data" structure as its fields, the names of wich are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.
 
 The "metadata" structure is similar to the "data" (described above), and it contains mostly meta-data and few important data, namely the id's of parts, nodes, etc, which are generally stored in fields called "ids".
 
