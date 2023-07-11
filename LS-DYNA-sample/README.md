@@ -75,7 +75,7 @@ From the above figure and the time history of the kinetic energy (KE) of Part 4:
 + Full contact took place slightly before $0.05\times10^{-3}$ s, i.e. when KE of Part 4 has just reached its minimum (in this case, zero).
 + Contact finsihed at $0.08\times10^{-3}$ s, when the KE curve of Part 4 becomes flat again (i.e. Part 4 motion is no longer influenced by external agencies).
 
-Note: we used the zero-kinetic energy of a part to define the full contact instant because that part is a rigid body (i.e. when the y-velocity of any point is zero, then all points have zero velocity as well. Thus, the part kinetic energy is zero). In general, contact varies from a spatial point to another.
+Note: we used the zero-kinetic energy of a part to define the full contact instant because that part is a rigid body (i.e. when the y-velocity of any point is zero, then all points have zero velocity as well. Thus, the part kinetic energy is zero). In general, contact varies from a spatial point to another, and the impactor kinetic energy needs not reach zero.
 
 
 ### model animation
