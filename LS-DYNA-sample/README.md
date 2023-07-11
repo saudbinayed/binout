@@ -68,7 +68,7 @@ Matlab script can be found in the [figs](../figs/) and [videos](../videos/) fold
 
 ### kinetic energy graph
 ![Energies plot](../figs/energies.svg) 
-In the legend, (KE): kinetic energy, (IE): internal energy.
+In the legend, (KE): kinetic energy, (IE): internal energy, (HGE): hourglass energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
 + The impact event had started at about $0.01\times10^{-3}$ s, since KE of Part 4 has just started to decrease. 
