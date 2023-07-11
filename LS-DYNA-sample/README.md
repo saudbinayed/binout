@@ -81,7 +81,7 @@ Note: we used the zero-kinetic energy of a part to define the full contact insta
 ### model animation
 ![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)
 
-Colors correspond to values of the resultant velocity, given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
+Colors correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
 
 
 
