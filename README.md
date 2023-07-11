@@ -73,7 +73,7 @@ a scalar (possibly highly nested) MATLAB structure as the first input argument, 
 ### how to get a `binout` file?
 To make LS-DYNA writes the results of your interest to one (or more) `binout` file(s), follow the following steps:
 1. In the input keyword file, add one or more database keywords of the form `*database_<option>`, where `<option>` is the database type, e.g. `matsum`, `nodout`, etc.
-   1. In each database keyword, set the value of `BINARY` (second field of first card) to `2`, indicating that results should be written as binary data.
+   1. In each database keyword, set the value of `BINARY` (second field of first card) to `2`, to tell LS-DYNA to add this database to the binout file.
 1. For certain kinds of database types, you need to add some required database keywords of the type `database_history_<options>` to specify which entities to include in that database, e.g. nodes, elements, and so on. 
 1. Run your model, and LS-DYNA should generate one (or more) `binout` files 
 
