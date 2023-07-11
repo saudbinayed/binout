@@ -65,9 +65,19 @@ then there is no need to make further explaination since (in this case) the `bin
 
 #### optional
 If needed, one can use the standalone function `struct2graph()` to visually display the hierarchy map of the `binin` structure. The function accepts 
-a scalar (possibly highly nested) MATLAB structure as the first input argument, and it produces the figures and returns their handles as output.     
+a scalar (possibly highly nested) MATLAB structure as the first input argument, and it produces the figures and returns their handles as output.   
 
-#### final remarks
+
+### how to get a `binout` file?
+To make LS-DYNA writes the results of your interest to one (or more) `binout` file(s), follow the following steps:
+1. In the input keyword file, add one or more database keywords of the form `*database_<option>`, where `<option>` is the database type, e.g. `matsum`, `nodout`, etc.
+1. In each database keyword, set the value of `BINARY` (second field of first card) to `2`, indicating that results should be written as binary data.
+1. For certain kinds of database types, you need to add required database keywords of the type `database_history_<options>` to specify which entities to include in that database file, e.g. which nodes, elements, etc. 
+1. Run your model, and LS-DYNA should generate one (or more) `binout` files 
+
+The first of these files is named as `binout`, which is called the root file. The number of generated binout files, by default, is about `ceil(overallSize/1)`, where `overallSize` is the total size of requested data in gigabytes (GB).
+
+### final remarks
 The aim of the work presented herein is to make working with LS-DYNA results easier for engineers and researchers, so please let us know if you encounter any 
 problems or if you need additional clarifications about how to make this work in real use.  
 
