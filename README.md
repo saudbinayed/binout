@@ -43,7 +43,7 @@ Every root field is itself a scaler structure. Some kinds of root structures wil
 
 For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on.
 
-The actual result data are contained in the "data" structure as its fields, the names of which are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.
+The actual result (i.e. state) data are contained in the "data" structure as its fields, the names of which are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.
 
 The "metadata" structure is similar to the "data" (described above), and it contains mostly meta-data and few important data, namely the id's of parts, nodes, etc, which are generally stored in fields called "ids".
 
@@ -54,13 +54,13 @@ The values associated with the fields of the "data" structure are in general 2D 
 time instants (so that the number of rows equal the number of entries of the time vector). The columns of the 2D arrays correspond to the IDs of the entities (like parts, nodes, etc), which (again) are generally found in the "metadata" structure. However, the IDs of elements and
 contacts are stored directly in the "data" structure itself. The columns of the 2D arrays in the "data" structures in the "elout" database (say "elout.shell") correspond to elements IDs (stored in "ids") _and_ their integration points (the number of which is stored in "nip").
 
-Again, the naming of fields in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
+Again, fields' names in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
 As exceptions, some fields in the "data" structure for the substructures of "elout" may need interpretations as they are abbreviated. The stresses are 
-abreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"). Likewise, strains are indicated by "eps_xx" and so on ("eps" for "epsilon"). The effective plastic strain is 
+abbreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"). Likewise, strains are abbreviated by "eps_xx" and so on ("eps" for "epsilon"). The effective plastic strain is 
 either denoted by "yield" (for "solid" and "tshell"),"plastic_strain" (for "shell") or "plastic_eps" (for "beam"). Effective von-Mises stress (if available) is denoted by "effsg".
-For shells, "upper_" and "lower_" are used as pre-fixes to refer to upper-most layer and lower-most layers. 
+For shells, "upper_" and "lower_" are used as pre-fixes to refer to upper-most and lower-most layers. 
 
-Lastly, the structuring and naming of fields are exactly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
+Lastly, the structuring and naming of fields are directly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
 then there is no need to make further explaination since (in this case) the `binin` structure should be very familiar too. 
 
 #### optional
