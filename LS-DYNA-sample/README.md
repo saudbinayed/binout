@@ -10,11 +10,10 @@ are written to a `binout` file after the model was run.
 ## Description of the model
 A simple input model was chosen for brevity. It consists of a small rigid impactor that is moving downward with a high initial velocity and hitting
 a larger deformable solid (from above), which was initially at rest. The model includes a typical (frictionless) contact definition to account for the impact event. 
-During the impact, the initial kinetic energy of the moving impactor diminshes as partial momentum is transferred to the larger deformable body. The 
-larger body absorbs part of that input energy as internal (strain) energy. The remaining energy is converted into kinetic energies that are split between
-the two bodies (the impactor and the deformable solid). The impactor reverses the direction of its motion, and the impact event ends when the two bodies
-ultimately lose contact. The impactor departs away (with no return) with a new terminal velocity, and endless elastic waves' propagations get established
-in the deformable solid.   
+During the impact, the initial kinetic energy of the moving impactor diminshes as the majority of its momentum is transferred to the larger deformable body. The 
+larger body absorbs part of that input energy as internal (strain) energy. A small portion of the initial input energy is converted back into a post-impact kinetic energy in the impactor. The impactor uses that energy to reverse the direction of its motion, and the impact event ends when the two bodies
+ultimately lose contact. The impactor departs away (with no return) with a new terminal velocity, and end-less elastic waves' propagations get established
+in the deformable solid (and the energy trapped in the larger body continuously swings between the forms of internal energy (deformations) and kinetic energy (vibrations)). However, we limit ourselves to the time window around the impact event. 
 
 Both the impactor and the deformable body are assumed to be solids in a state of "plane-strain". Therefore, they are modelled as 2D "shell"s in the xy-plane as
 a simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.1 m, while the deformable solid is 1.0 x 0.4 m. The two bodies are centre-aligned horizontally.
