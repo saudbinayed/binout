@@ -102,7 +102,7 @@ supervised by:
 + Dr. Maurizio Guadagnini (m.gaudagnini@sheffield.ac.uk)
 
 developed by:
-+ Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk)
++ Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk;[@Dr_SamRigby](https://twitter.com/Dr_SamRigby))
 + Saud A. E. Alotaibi (salotaibi2@sheffield.ac.uk; [@saudbinayed](https://twitter.com/saudbinayed)), sponsored by [Qassim University](https://qu.edu.sa), Saudi Arabia, and the Saudi Arabian Cultural Bureau in London, UK.
 
  `   
