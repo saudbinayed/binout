@@ -160,7 +160,7 @@ if exist(videosFolder,'dir')==0
 end
 videoFileName=[videosFolder,'/','impact_color_resultant_vel'];
 vid=VideoWriter([videoFileName,'.mp4'],'MPEG-4');
-vid.FrameRate=8;
+vid.FrameRate=12;
 vid.Quality=90;
 open(vid);
 writeVideo(vid,F);
@@ -197,12 +197,12 @@ presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrou
 
 figure(5); clf; cla;
 fig=gcf;  ax=gca;
-
+set(0,'defaulttextinterpreter','latex','defaulttextfontsize',7,'defaulttexthorizontalalignment','left','defaulttextverticalalignment','middle','defaulttextunits','data');
 yyaxis(ax,"left");
 plot(ax,t2,presq)
 txt=compose('P Node %d',nid);
-text(ax,0.01e-3,0,{'\uparrow compression'},'Units','data','FontSize',7,'Interpreter','tex','HorizontalAlignment','left','VerticalAlignment','bottom');
-text(ax,0.01e-3,0,{'\downarrow tension'},'Units','data','FontSize',7,'Interpreter','tex','HorizontalAlignment','left','VerticalAlignment','top');
+text(ax,0.01e-3,0,{'$\uparrow$ compression'},'VerticalAlignment','bottom');
+text(ax,0.01e-3,0,{'$\downarrow$ tension'},'VerticalAlignment','top');
 ylabel(ax,'Pressure [Pa]');
 
 yyaxis(ax,"right");
@@ -250,21 +250,21 @@ colormap(ax,jet(4));
 
 hold(ax,'on');
 plot(ax,xq,yq,'o','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
+plot(ax,xq,yq,'+','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',5);
 hold(ax,'off');     
 txt=compose(' Node %d',nid);
 fontsz=10;
 
 % adding simple shadow
-ldx=0.003;
+ldx=0.002;
 ldy=ldx;
-% text(ax,xq-ldx,yq-ldy,txt,'Color','k','FontWeight','bold','FontSize',fontsz,'Units','data','HorizontalAlignment','left','VerticalAlignment','middle');
-
-text(ax,xq+0.01,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz,'Units','data','HorizontalAlignment','left','VerticalAlignment','middle');
+text(ax,xq+0.02-ldx,yq-ldy,txt,'Color','k','FontWeight','bold','FontSize',fontsz);
+text(ax,xq+0.02,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz);
 
 % adding parts labels
 txt=compose('Part %d',Pids);
-
-text(ax,[P3LB(1);P4LB(1)]+0.01,[P3LB(2);P4LB(2)]+0.01,txt,'FontSize',fontsz,'Color','w','HorizontalAlignment','left','VerticalAlignment','bottom','Margin',4);
+text(ax,[P3LB(1);P4LB(1)]+0.01-ldx,[P3LB(2);P4LB(2)]+0.01-ldy,txt,'FontSize',fontsz,'FontWeight','bold','Color','k','VerticalAlignment','bottom','Margin',4);
+text(ax,[P3LB(1);P4LB(1)]+0.01,[P3LB(2);P4LB(2)]+0.01,txt,'FontSize',fontsz,'Color','w','VerticalAlignment','bottom','Margin',4);
 ax.Units='centimeters';
 fig.Units='centimeters';
 axPos=ax.tightPosition(IncludeLabels=true);
@@ -324,6 +324,7 @@ fmt=string(fmt);
 filename=erase(filename,regexpPattern('\.[a-zA-Z0-9]+$'));
 filename=char(filename);
 %
+set(fig,'InvertHardCopy','off');
 if any(fmt=="pdf")
     fig.Units="centimeters";
     fig.PaperUnits="centimeters";
