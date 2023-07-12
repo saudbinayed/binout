@@ -7,6 +7,10 @@ binin = get_binout_data(binout_filename);
 
 %[figParents,figSelect]=struct2graph(binin,"All"); %graphically see contents of binin
 
+
+%%
+set(0,'defaulttextinterpreter','latex','defaulttextfontsize',7,'defaulttexthorizontalalignment','left','defaulttextverticalalignment','middle','defaulttextunits','data');
+set(0,'defaultlegendinterpreter','latex');
 %% matsum
 
 Pids=binin.matsum.metadata.ids; %ids of parts
@@ -127,7 +131,7 @@ cb=colorbar(ax); cb.Label.set('String',[colorVar,' [m/s]'],'Interpreter','none')
 cb.Layout.Tile='east';
 clim(ax,[min(vResultant,[],"all"),max(vResultant,[],"all")]);
 txt=compose('Time = %7.6f [s]',t(1));
-te=text(0.02,1,txt,'FontSize',8,'Units','normalized','HorizontalAlignment','left','VerticalAlignment','top');
+te=text(0.02,1,txt,'FontSize',8,'VerticalAlignment','top');
 
 ax.NextPlot="replacechildren";
 fig.ToolBar="none";
@@ -162,6 +166,15 @@ videoFileName=[videosFolder,'/','impact_color_resultant_vel'];
 vid=VideoWriter([videoFileName,'.mp4'],'MPEG-4');
 vid.FrameRate=12;
 vid.Quality=90;
+pads=2-mod(size(F(1).cdata),2);
+pads(mod(size(F(1).cdata),2)==0)=0;
+padW=pads(1); padH=pads(2);
+if any([padW,padH]~=0)
+    for i=1:length(F)
+        F(i).cdata(end+1:end+padW,:,:)=0;
+        F(i).cdata(:,end+1:end+padH,:)=0;
+    end
+end
 open(vid);
 writeVideo(vid,F);
 close(vid);
@@ -197,7 +210,6 @@ presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrou
 
 figure(5); clf; cla;
 fig=gcf;  ax=gca;
-set(0,'defaulttextinterpreter','latex','defaulttextfontsize',7,'defaulttexthorizontalalignment','left','defaulttextverticalalignment','middle','defaulttextunits','data');
 yyaxis(ax,"left");
 plot(ax,t2,presq)
 txt=compose('P Node %d',nid);
@@ -359,5 +371,6 @@ for fmt0=fmt(ismember(fmt,["pdf","emf","eps"]))
     figFileName=[filename,'.',char(fmt0)];
     exportgraphics(fig,figFileName,'ContentType','vector');
 end
+set(fig,'Color','factory');
 end
 
