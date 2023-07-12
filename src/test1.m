@@ -37,7 +37,7 @@ txt(end+1:end+length(Pids))=compose('HGE Part %d',Pids);
 % txt(end+1)={'TE'};
 
 hold(ax,'off');
-legend(ax,txt);
+legend(ax,txt,'Location','northeast');
 xlabel(ax,'Time [s]'); 
 ylabel(ax,'Energy [N.m]');
 set(ax.XAxis,'Exponent',-3,'TickLabelFormat','%.2f');
@@ -325,11 +325,16 @@ axIn.Position(3:4)=axIn.Position(3:4)+([1 1]-posTight(3:4));
 %
 fig=axIn.Parent;
 leg=findobj(fig.Children,'Type','Legend');
+if ~isempty(leg) && any(string(leg.Location)==["northeast","northwest","southeast","southwest"])
 leg.Units='normalized'; leg.Interpreter='latex';
 axIn.Units='normalized';
-gap(1)=sum(axIn.Position([1 3]))-sum(leg.Position([1 3]));
-gap(2)=sum(axIn.Position([2 4]))-sum(leg.Position([2 4]));
-leg.Position(1:2)=leg.Position(1:2)+0.4*gap;
+gap(1)=sum(axIn.Position([1 3]))-sum(leg.Position([1 3])); %right
+gap(2)=sum(axIn.Position([2 4]))-sum(leg.Position([2 4])); %top
+gap(3)=axIn.Position([1])-leg.Position([1]); %left
+gap(4)=axIn.Position([2])-leg.Position([2]); %bottom
+[~,gminId]=mink(abs(gap),2);
+leg.Position(1:2)=leg.Position(1:2)+0.4*gap(gminId);
+end
 axOut=axIn;
 end
 
