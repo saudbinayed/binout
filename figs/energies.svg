@@ -9,12 +9,12 @@
       ><path d="M0 0 L1120 0 L1120 840 L0 840 L0 0 Z"
       /></clipPath
     ></defs
-    ><g style="fill:rgb(240,240,240); stroke:rgb(240,240,240);"
+    ><g style="fill:white; stroke:white;"
     ><rect x="0" y="0" width="1120" style="clip-path:url(#clipPath1); stroke:none;" height="840"
     /></g
-    ><g style="fill:rgb(240,240,240); text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:rgb(240,240,240); color-interpolation:sRGB;"
+    ><g style="fill:white; text-rendering:optimizeSpeed; color-rendering:optimizeSpeed; image-rendering:optimizeSpeed; shape-rendering:crispEdges; stroke:white; color-interpolation:sRGB;"
     ><rect x="0" width="1120" height="840" y="0" style="stroke:none;"
-      /><path d="M87 756 L1096 756 L1096 39 L87 39 Z" style="fill:white; stroke:none;"
+      /><path style="stroke:none;" d="M87 756 L1096 756 L1096 39 L87 39 Z"
     /></g
     ><g style="fill-opacity:0.1098; color-rendering:optimizeQuality; color-interpolation:linearRGB; text-rendering:geometricPrecision; stroke:rgb(26,26,26); stroke-linecap:butt; stroke-miterlimit:1; stroke-opacity:0.1098; fill:rgb(26,26,26); stroke-dasharray:1,3; stroke-width:1.3333; stroke-linejoin:bevel; image-rendering:optimizeQuality;"
     ><line y2="39" style="fill:none;" x1="112.225" x2="112.225" y1="756"

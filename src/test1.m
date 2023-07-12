@@ -330,6 +330,7 @@ filename=erase(filename,regexpPattern('\.[a-zA-Z0-9]+$'));
 filename=char(filename);
 %
 set(fig,'InvertHardCopy','off');
+set(fig,'Color','w');
 if any(fmt=="pdf")
     fig.Units="centimeters";
     fig.PaperUnits="centimeters";
