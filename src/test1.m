@@ -204,17 +204,22 @@ txt=compose('P Node %d',nid);
 text(ax,0.01e-3,0,{'$\uparrow$ compression'},'VerticalAlignment','bottom');
 text(ax,0.01e-3,0,{'$\downarrow$ tension'},'VerticalAlignment','top');
 ylabel(ax,'Pressure [Pa]');
+set(ax.YAxis,'TickLabelFormat','%.1f');
 
 yyaxis(ax,"right");
 ydata=-nodout.y_velocity(:,nid);
 plot(ax,t,ydata);
 txt(end+1)=compose('$-\\dot{u}_y$ Node %d',nid);
 ylabel(ax,'Velocity [m/s]');
+set(ax.YAxis,'TickLabelFormat','%.1f');
 
 legend(ax,txt);
 xlabel(ax,'Time [s]');
 set(ax.XAxis,'Exponent',-3,'TickLabelFormat','%.2f');
 ax=tidyAxes(ax);
+
+figFileName=[folderName,'/','pressure_and_vel_at_mid_node'];
+fig=printFig(fig,figFileName,["pdf","svg"]);
 
 
 
