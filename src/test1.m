@@ -210,6 +210,8 @@ yyaxis(ax,"right");
 ydata=-nodout.y_velocity(:,nid);
 plot(ax,t,ydata);
 txt(end+1)=compose('$-\\dot{u}_y$ Node %d',nid);
+text(ax,0.01e-3,0,{'$\uparrow$ down'},'VerticalAlignment','bottom');
+text(ax,0.01e-3,0,{'$\downarrow$ up'},'VerticalAlignment','top');
 ylabel(ax,'Velocity [m/s]');
 set(ax.YAxis,'TickLabelFormat','%.1f');
 
