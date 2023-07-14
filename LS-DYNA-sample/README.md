@@ -85,7 +85,12 @@ Colors correspond to values of the resultant velocity, which is (for a 2D proble
 Therefore, this animation precisely shows the evolution (transport) of kinetic energy density (energy per unit volume) because this energy density is proportional to the square of the resultant velocity, $k=\frac{1}{2} \rho (\dot{u}_x^2 +\dot{u}_y^2)$.
 In addition, gradients in colors indicate graident of velocity, which in turn indicate strain rates; most practical materials are sensitive to high strain rates such that the material becomes stronger (its strength increases).
 
-
-
+<!--### remarks
+One of the aims of bringing the rich data from LS-DYNA into MATLAB is that they become essentially at one's hand and hence can be played with to extract additional useful information. 
+In our example, we saw that if a body with high kinetic energy is intercepted abruptly, its kinetic energy needs to be accounted for since that energy has to go somewhere. In the example,
+the initial kinetic energy of the impactor initiates internal energy in the blocking deformable solid; that is, the solid will be subjected to high stresses and deformations (and if these are
+high enough, they would lead to failure in the body's material). Another lesson is that kinetic energy can be harmful (as with the energy of the impactor), but in the same time it can be helpful
+as with the kinetic energy of the (impacted upon) deformable solid; the internal energy in this solid cannot be equal to the input energy from the impactor because there is a kinetic energy in the solid
+(the sum of energies of the deformable solid must be equal to the net enegies of the impactor, before and after the impact).-->
 
   
