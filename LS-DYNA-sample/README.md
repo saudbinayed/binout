@@ -83,7 +83,7 @@ Note: we used the zero-kinetic energy of a part to define the full contact insta
 
 Colors correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
 Therefore, this animation precisely shows the evolution (transport) of kinetic energy density (energy per unit volume) because this energy density is proportional to the square of the resultant velocity, $k=\frac{1}{2} \rho (\dot{u}_x^2 +\dot{u}_y^2)$.
-
+In addition, gradients in colors indicate graident of velocity, which in turn indicate strain rates; most practical materials are sensitive to high strain rates such that the material becomes stronger (its strength increases).
 
 
 

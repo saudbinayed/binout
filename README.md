@@ -81,7 +81,8 @@ The first of these files is named as `binout`, which is called the root file. Th
 
 ### final remarks
 The aim of the work presented herein is to make working with LS-DYNA results easier for engineers and researchers, so please let us know if you encounter any 
-problems or if you need additional clarifications about how to make this work in real use.  
+problems or if you need additional clarifications about how to make this work in real use.  We also would like to explain choosing the word "binin": it is meant 
+to be read as BINary output of ls-dyna IN matlab. That is, `binin` contains the output (results) from LS-DYNA.  
 
 
 ## motivations
