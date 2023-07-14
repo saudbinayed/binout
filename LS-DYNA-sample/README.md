@@ -93,4 +93,8 @@ high enough, they would lead to failure in the body's material). Another lesson 
 as with the kinetic energy of the (impacted upon) deformable solid; the internal energy in this solid cannot be equal to the input energy from the impactor because there is a kinetic energy in the solid
 (the sum of energies of the deformable solid must be equal to the net enegies of the impactor, before and after the impact).-->
 
+### notes
+The model is 3D, but it was represented and solved as 2D according to the assumption of plain strain. Plain strain applies to cases where the third dimension (out-of-plane) is infinite, and hence there is no displacements and strains along that dimension.
+We confined ourselves to a slice of unit thickness (in the third dimension). Therefore, all quantities are reported in absolute units (i.e. we dropped the "per unit" thickness). 
+
   
