@@ -95,6 +95,6 @@ as with the kinetic energy of the (impacted upon) deformable solid; the internal
 
 ### notes
 The model is 3D, but it was represented and solved as 2D according to the assumption of plain strain. Plain strain applies to cases where the third dimension (out-of-plane) is infinite, and hence there is no displacements and strains along that dimension.
-We confined ourselves to a slice of unit thickness (in the third dimension). Therefore, all quantities are reported in absolute units (i.e. we dropped the "per unit" thickness). 
+We confined ourselves to a slice of unit thickness (in the third dimension). Therefore, all quantities are reported in absolute units (i.e. we dropped the "per unit" thickness for the energies). 
 
   
