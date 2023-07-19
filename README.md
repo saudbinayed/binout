@@ -1,10 +1,10 @@
 # binout
-Matlab functions to work with LS-DYNA `binout` files. The function `get_binout_data()` (called the binout reader) is the one that reads the binout file.
-The function `get_d3plot_d3thdt_control_data()` is a helper function that is called (internally) from within the binout reader function.
-The function `struct2graph()` is a standalone function that graphically displays content (or fields) of a nested MATALB `struct`. The MATLAB source files of 
-the functions are in the [`src`](/src/) folder.
+Matlab functions to work with LS-DYNA `binout` files:
+* The function `get_binout_data()`, called the binout reader, reads result (or state) data from the binout file.
+* The function `get_d3plot_d3thdt_control_data()` is a helper function and is called (internally) from within the binout reader function to retreive important control data from the root `d3plot` file (if available)
+* The function `struct2graph()` is a standalone function and can be used (for convenience) to graphically display the content and hierarchy of a nested MATALB `struct`. 
 
-For convenience, sample LS-DYNA files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the `binout` is about 78 MB) and use the MATLAB script `test1.m` in the `src` folder to get started. 
+The MATLAB source files of the functions are in the [`src`](/src/) folder. Additionally, sample LS-DYNA files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the `binout` is about 78 MB) and use the MATLAB script `test1.m` in the `src` folder to get started. 
 
 ## binout reader
 ### what it does?
@@ -39,13 +39,17 @@ The root `binout` file is the first if there are more than one binout file. The 
 
 This is a scalar but highly nested structure. Use the "." (dot) indexing method in MATLAB to traverse the `binin` structure in order to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control". 
 
-Every root field is itself a scaler structure. Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data". 
+All fields of the main `binin` structure are scalar structures themselves. In general, each of these structures contains exactly two fields: "data" and "metadata", each of which is also a structure. 
+The fields of the "data" structure are the actual result (state) data of interest. Among the fields of the "metadata" structure is a field called "ids" that stores the IDs of the model entities, e.g nodes, parts, etc.
+However, some fields of the `binin` have intermediate structures under them, and the "data" and "metadata" are fields of those intermediate structures. 
+
+<!--Every root field is itself a scaler structure. Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data".-->
 
 For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on. See the [`figs/graphs`](/figs/graphs/) folder, for examples of content and organisation of the `binin` struct. 
 
-The actual result (i.e. state) data are contained in the "data" structure as its fields, the names of which are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.
+<!--The actual result (i.e. state) data are contained in the "data" structure as its fields, the names of which are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.-->
 
-The "metadata" structure is similar to the "data" (described above), and it contains mostly meta-data and few important data, namely the id's of parts, nodes, etc, which are generally stored in fields called "ids".
+<!--The "metadata" structure is similar to the "data" (described above), and it contains mostly meta-data and few important data, namely the id's of parts, nodes, etc, which are generally stored in fields called "ids".-->
 
 The root field "control" under the `binin` structure contains supplementary control data retrieved from the root `d3plot` file, which is provided by (internally) calling the `get_d3plot_d3thdt_control_data()` helper function. The binout reader function will auto-detect the root d3plot file. Among the control data retrieved are the element-node connectivity arrays and some others (like the initial geometry and useful info about the model).
 
