@@ -1,0 +1,37 @@
+|database|activation keywords|can be in `binout`?|name in `binout`|
+|:-------|:------------------|:------------------|:---------------|
+|ATDOUT|`*CONTACT_AUTOMATIC_ONE_WAY_SURFACE_TO_SURFACE_TIEBREAK`|true|`atdout`|
+|BEARING|`*ELEMENT_BEARING`|true|`bearing`|
+|BNDOUT||true|`bndout`|
+|CURVOUT|`*DEFINE_CURVE_FUNCTION`|true|`curvout`|
+|DEFGEO||true|`defgeo`|
+|DEFORC|`*DATABASE_HISTORY_DISCRETE_OPTION`|true|`deforc`|
+|DEMASSFLOW|`*DEFINE_DE_MASSFLOW_PLANE`|true|`demassflow`|
+|DESTAT||true|`destat`|
+|DISBOUT|`*DATABASE_HISTORY_BEAM`|true|`disbout`|
+|ELOUT|`*DATABASE_HISTORY_OPTION`|true|`elout`|
+|FSI|`*CONSTRAINED_LAGRANGE_IN_SOLID` or `*ALE_STRUCTURED_FSI`|true|`dbfsi`|
+|FSI_SENSOR|`*CONSTRAINED_LAGRANGE_IN_SOLID` or `*ALE_STRUCTURED_FSI`|true|`dbsensor`|
+|GCEOUT|`*CONTACT_ENTITY`|true|`gceout`|
+|GLSTAT||true|`glstat`|
+|JNTFORC|`*CONSTRAINED_JOINT_OPTION`|true|`jntforc`|
+|MASSOUT||true|`massout`|
+|MATSUM||true|`matsum`|
+|NCFORC|`*CONTACT`|true|`ncforc`|
+|NODFOR|`*DATABASE_NODAL_FORCE_GROUP`|true|`nodfor`|
+|NODOUT|`*DATABASE_HISTORY_NODE_OPTION`|true|`nodout`|
+|PBSTAT|`*DEFINE_PARTICLE_BLAST`|true|`pbstat`|
+|PRTUBE|`*DEFINE_PRESSURE_TUBE`|true|`prtube`|
+|RBDOUT||true|`rbdout`|
+|RCFORC|`*CONTACT`|true|`rcforc`|
+|RWFORC|`*RIGIDWALL_OPTION`|true|`rwforc`|
+|SBTOUT||true|`sbtout`|
+|SECFORC|`*DATABASE_CROSS_SECTION_OPTION`|true|`secforc`|
+|SLEOUT|`*CONTACT_OPTION`|true|`sleout`|
+|SPCFORC|`*BOUNDARY_SPC_OPTION`|true|`spcforc`|
+|SWFORC||true|`swforc`|
+|TPRINT|`*DATABASE_HISTORY_NODE_OPTION`|true|`tprint`|
+|TRACER_ALE|`*DATABASE_TRHIST`|true|`trhale`|
+|TRACER_GENERAL||false|`trcrgal_binout`|
+|TRACER_GENERATE||false|`trcrgen_binout`|
+|TRHIST|`*DATABASE_TRACER`|true|`trhist`|
