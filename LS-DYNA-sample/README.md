@@ -8,8 +8,12 @@ In the input model, the following result databases are requested: "matsum" and "
 are written to a `binout` file after the model was run. 
 
 ## Description of the model
-A simple input model was chosen for brevity. It consists of a small rigid impactor that is moving downward with a high initial velocity and hitting
-a larger deformable solid (from above), which was initially at rest. The model includes a typical (frictionless) contact definition to account for the impact event. 
+A simple input model was chosen for brevity. It consists of a small rigid impactor (Part 4 in the figure) that is moving downward with a high initial velocity and hitting
+a larger deformable solid (Part 3 in the figure) from above, which was initially at rest. The layout of the bodies just before impact is shown below:
+
+<p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="75%"/></p>
+
+The model includes a typical (frictionless) contact definition to account for the impact event. 
 During the impact, the initial kinetic energy of the moving impactor diminshes as partial momentum is transferred to the larger deformable body. The 
 larger body absorbs part of that input energy as internal (strain) energy. The remaining energy is converted into kinetic energies that are split between
 the two bodies (the impactor and the deformable solid). The impactor reverses the direction of its motion, and the impact event ends when the two bodies
@@ -17,7 +21,8 @@ ultimately lose contact. The impactor departs away (with no return) with a new t
 in the deformable solid.   
 
 Both the impactor and the deformable body are assumed to be solids in a state of "plane-strain". Therefore, they are modelled as 2D "shell"s in the xy-plane as
-a simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.1 m, while the deformable solid is 1.0 x 0.4 m. The two bodies are centre-aligned horizontally.
+a simplification. The y-axis is the vertical. The impactor is of size 0.2 x 0.1 m, while the deformable solid is 1.0 x 0.4 m. The two bodies are centre-aligned horizontally. See
+the previous figure.
 
 
 ## content of the `binout`
@@ -67,7 +72,8 @@ example. The script also provide the MATLAB code to generate result plots, model
 Matlab script can be found in the [figs](../figs/) and [videos](../videos/) folders.
 
 ### kinetic energy graph
-![Energies plot](../figs/energies.svg) 
+<!--![Energies plot](../figs/energies.svg)-->
+<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="75%"/></p>
 In the legend, (KE): kinetic energy, (IE): internal energy, (HGE): hourglass energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
@@ -79,13 +85,23 @@ Note: we used the zero-kinetic energy of a part to define the full contact insta
 
 
 ### model animation
-![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)
+<!--![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)-->
+<p align="center"><img alt="animation of small impactor hitting a stand-still large body" src="../videos/impact_color_resultant_vel.gif" width="75%"/></p>
 
 Colors correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
 Therefore, this animation precisely shows the evolution (transport) of kinetic energy density (energy per unit volume) because this energy density is proportional to the square of the resultant velocity, $k=\frac{1}{2} \rho (\dot{u}_x^2 +\dot{u}_y^2)$.
+In addition, gradients in colors indicate graident of velocity, which in turn indicate strain rates; most practical materials are sensitive to high strain rates such that the material becomes stronger (its strength increases).
 
+<!--### remarks
+One of the aims of bringing the rich data from LS-DYNA into MATLAB is that they become essentially at one's hand and hence can be played with to extract additional useful information. 
+In our example, we saw that if a body with high kinetic energy is intercepted abruptly, its kinetic energy needs to be accounted for since that energy has to go somewhere. In the example,
+the initial kinetic energy of the impactor initiates internal energy in the blocking deformable solid; that is, the solid will be subjected to high stresses and deformations (and if these are
+high enough, they would lead to failure in the body's material). Another lesson is that kinetic energy can be harmful (as with the energy of the impactor), but in the same time it can be helpful
+as with the kinetic energy of the (impacted upon) deformable solid; the internal energy in this solid cannot be equal to the input energy from the impactor because there is a kinetic energy in the solid
+(the sum of energies of the deformable solid must be equal to the net enegies of the impactor, before and after the impact).-->
 
-
-
+### notes
+The model is 3D, but it was represented and solved as 2D according to the assumption of plain strain. Plain strain applies to cases where the third dimension (out-of-plane) is infinite, and hence there is no displacements and strains along that dimension.
+We confined ourselves to a slice of unit thickness (in the third dimension). Therefore, all quantities are reported in absolute units (i.e. we dropped the "per unit" thickness for the energies). 
 
   

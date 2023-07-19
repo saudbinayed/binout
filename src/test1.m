@@ -205,6 +205,7 @@ else
     pres=-(elout.sig_xx(:,iptIdx)+elout.sig_yy(:,iptIdx)+elout.sig_zz(:,iptIdx))/3; % pressure (+ve: compression)
     fprintf(1,'Note: there are %d int. pts. per elem. Chose int pt. #%d.\n',max(elout.nip(1,:)),ipt);
 end
+nid=4113; %node at mid point
 [~,eids]=find(connec(1:4,:)==nid); % elem ids sharing node nid
 presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrounding elems
 
@@ -216,7 +217,7 @@ txt=compose('P Node %d',nid);
 text(ax,0.01e-3,0,{'$\uparrow$ compression'},'VerticalAlignment','bottom');
 text(ax,0.01e-3,0,{'$\downarrow$ tension'},'VerticalAlignment','top');
 ylabel(ax,'Pressure [Pa]');
-set(ax.YAxis,'TickLabelFormat','%.1f');
+set(ax.YAxis,'Exponent',9,'TickLabelFormat','%.1f');
 
 yyaxis(ax,"right");
 ydata=-nodout.y_velocity(:,nid);
@@ -268,21 +269,16 @@ pa.FaceAlpha=0.8; pa.EdgeAlpha=0.5; pa.LineWidth=0.2;
 colormap(ax,jet(4));
 
 hold(ax,'on');
-plot(ax,xq,yq,'o','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
-plot(ax,xq,yq,'+','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',5);
+for mrk=["o","+"]
+plot(ax,xq,yq,mrk,'MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
+end
 hold(ax,'off');     
 txt=compose(' Node %d',nid);
 fontsz=10;
 
-% adding simple shadow
-ldx=0.002;
-ldy=ldx;
-text(ax,xq+0.02-ldx,yq-ldy,txt,'Color','k','FontWeight','bold','FontSize',fontsz);
-text(ax,xq+0.02,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz);
-
+th=text(ax,xq+0.02,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz);
 % adding parts labels
 txt=compose('Part %d',Pids);
-text(ax,[P3LB(1);P4LB(1)]+0.01-ldx,[P3LB(2);P4LB(2)]+0.01-ldy,txt,'FontSize',fontsz,'FontWeight','bold','Color','k','VerticalAlignment','bottom','Margin',4);
 text(ax,[P3LB(1);P4LB(1)]+0.01,[P3LB(2);P4LB(2)]+0.01,txt,'FontSize',fontsz,'Color','w','VerticalAlignment','bottom','Margin',4);
 ax.Units='centimeters';
 fig.Units='centimeters';
@@ -290,6 +286,15 @@ axPos=ax.tightPosition(IncludeLabels=true);
 fig.Position(3:4)=axPos(3:4);
 ax.Position(1:2)=ax.Position(1:2)+([0 0]-axPos(1:2));
 
+txtID=findobj(ax.Children,'Type','Text');
+for txtid=txtID'
+
+tPos=txtid.Extent'+[0 0 txtid.Extent(1:2)]'+0.002*[-1 -0.25 1 0.25]';
+tPos=reshape(tPos,2,[]);
+[tX,tY]=ndgrid(tPos(1,:),tPos(2,:)); tPos=[tX(:),tY(:)];
+txtpa=patch(ax,'Faces',[1,2,4,3],'Vertices',tPos,'FaceColor','k','FaceAlpha',0.3,'EdgeColor','k','EdgeAlpha',1,'LineWidth',0.2);
+end
+uistack(txtID,'top');
 
 figFileName=[folderName,'/','initial_geometry_with_labels'];
 fig=printFig(fig,figFileName,["pdf","svg"]);
@@ -297,8 +302,35 @@ fig=printFig(fig,figFileName,["pdf","svg"]);
 
 
 
+%%
+yq=[0,0.2,0.4];
+xq=repmat(0.5,size(yq));
 
+[~,idq]=min(sqrt((x0-xq).^2+(y0-yq).^2));
+% idq=idq(1); 
+xq=x0(idq); yq=y0(idq); % actual coordinate of node
+nid=Nids(idq); % actual id of node
+nid=double(nid);
+pid=1;
+[~,eidx]=ismember(connec(1:4,connec(end,:)==pid),nid); % elem ids sharing node nid
+pres1=pres(:,connec(end,:)==pid);
+presq=zeros(length(t),length(nid));
+for i=1:length(nid)
+    [~,eids]=find(eidx==i);
+    presq(:,i)=mean(pres1(:,eids),2); % Note: for surface nodes, this is without extrapolation, i.e. pressures = nearest integration point vertically.
+end
 
+figure(7); clf; cla;
+fig=gcf; ax=gca;
+plot(ax,t,presq);
+txt=compose('P(%g,%g), Node %d',[xq,yq,nid']);
+legend(ax,txt,'Location','northeast');
+xlabel(ax,'Time [s]'); ylabel(ax,'Pressure [Pa]');
+set([ax.XAxis],'Exponent',-3,'TickLabelFormat','%.2f');
+set(ax.YAxis,'Exponent',9,'TickLabelFormat','%.1f');
+ax=tidyAxes(ax);
+figFileName=[folderName,'/','pressure_near_edges_and_mid'];
+fig=printFig(fig,figFileName,["pdf","svg"]);
 
 
 
