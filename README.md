@@ -59,7 +59,7 @@ time instants (so that the number of rows equal the number of entries of the tim
 contacts are stored directly in the "data" structure itself. The columns of the 2D arrays in the "data" structures in the "elout" database (say "elout.shell") correspond to elements IDs (stored in "ids") _and_ their integration points (the number of which is stored in a field called "nip").
 
 In general, fields' names in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
-Although, few fields in the "data" structure for the substructures of "elout" are abbreviated.Stresses are 
+Although, few fields in the "data" structure for the substructures of "elout" are abbreviated. Stresses are 
 abbreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"), and, strains are abbreviated by "eps_xx" and so on ("eps" for "epsilon"). 
 
 Lastly, the structuring and naming of fields are directly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
