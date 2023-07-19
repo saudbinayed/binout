@@ -11,7 +11,7 @@ are written to a `binout` file after the model was run.
 A simple input model was chosen for brevity. It consists of a small rigid impactor (Part 4 in the figure) that is moving downward with a high initial velocity and hitting
 a larger deformable solid (Part 3 in the figure) from above, which was initially at rest. The layout of the bodies just before impact is shown below:
 
-<p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="60%"/></p>
+<p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="75%"/></p>
 
 The model includes a typical (frictionless) contact definition to account for the impact event. 
 During the impact, the initial kinetic energy of the moving impactor diminshes as partial momentum is transferred to the larger deformable body. The 
@@ -73,7 +73,7 @@ Matlab script can be found in the [figs](../figs/) and [videos](../videos/) fold
 
 ### kinetic energy graph
 <!--![Energies plot](../figs/energies.svg)-->
-<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="60%"/></p>
+<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="75%"/></p>
 In the legend, (KE): kinetic energy, (IE): internal energy, (HGE): hourglass energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
@@ -86,7 +86,7 @@ Note: we used the zero-kinetic energy of a part to define the full contact insta
 
 ### model animation
 <!--![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)-->
-<p align="center"><img alt="animation of small impactor hitting a stand-still large body" src="../videos/impact_color_resultant_vel.gif" width="60%"/></p>
+<p align="center"><img alt="animation of small impactor hitting a stand-still large body" src="../videos/impact_color_resultant_vel.gif" width="75%"/></p>
 
 Colors correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
 Therefore, this animation precisely shows the evolution (transport) of kinetic energy density (energy per unit volume) because this energy density is proportional to the square of the resultant velocity, $k=\frac{1}{2} \rho (\dot{u}_x^2 +\dot{u}_y^2)$.
