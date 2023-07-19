@@ -268,21 +268,16 @@ pa.FaceAlpha=0.8; pa.EdgeAlpha=0.5; pa.LineWidth=0.2;
 colormap(ax,jet(4));
 
 hold(ax,'on');
-plot(ax,xq,yq,'o','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
-plot(ax,xq,yq,'+','MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',5);
+for mrk=["o","+"]
+plot(ax,xq,yq,mrk,'MarkerFaceColor','none','MarkerEdgeColor','w','MarkerSize',6);
+end
 hold(ax,'off');     
 txt=compose(' Node %d',nid);
 fontsz=10;
 
-% adding simple shadow
-ldx=0.002;
-ldy=ldx;
-text(ax,xq+0.02-ldx,yq-ldy,txt,'Color','k','FontWeight','bold','FontSize',fontsz);
-text(ax,xq+0.02,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz);
-
+th=text(ax,xq+0.02,yq,txt,'Color','w','FontWeight','normal','FontSize',fontsz);
 % adding parts labels
 txt=compose('Part %d',Pids);
-text(ax,[P3LB(1);P4LB(1)]+0.01-ldx,[P3LB(2);P4LB(2)]+0.01-ldy,txt,'FontSize',fontsz,'FontWeight','bold','Color','k','VerticalAlignment','bottom','Margin',4);
 text(ax,[P3LB(1);P4LB(1)]+0.01,[P3LB(2);P4LB(2)]+0.01,txt,'FontSize',fontsz,'Color','w','VerticalAlignment','bottom','Margin',4);
 ax.Units='centimeters';
 fig.Units='centimeters';
@@ -290,6 +285,15 @@ axPos=ax.tightPosition(IncludeLabels=true);
 fig.Position(3:4)=axPos(3:4);
 ax.Position(1:2)=ax.Position(1:2)+([0 0]-axPos(1:2));
 
+txtID=findobj(ax.Children,'Type','Text');
+for txtid=txtID'
+
+tPos=txtid.Extent'+[0 0 txtid.Extent(1:2)]'+0.002*[-1 -0.25 1 0.25]';
+tPos=reshape(tPos,2,[]);
+[tX,tY]=ndgrid(tPos(1,:),tPos(2,:)); tPos=[tX(:),tY(:)];
+txtpa=patch(ax,'Faces',[1,2,4,3],'Vertices',tPos,'FaceColor','k','FaceAlpha',0.3,'EdgeColor','k','EdgeAlpha',1,'LineWidth',0.2);
+end
+uistack(txtID,'top');
 
 figFileName=[folderName,'/','initial_geometry_with_labels'];
 fig=printFig(fig,figFileName,["pdf","svg"]);
