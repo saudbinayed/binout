@@ -205,6 +205,7 @@ else
     pres=-(elout.sig_xx(:,iptIdx)+elout.sig_yy(:,iptIdx)+elout.sig_zz(:,iptIdx))/3; % pressure (+ve: compression)
     fprintf(1,'Note: there are %d int. pts. per elem. Chose int pt. #%d.\n',max(elout.nip(1,:)),ipt);
 end
+nid=4113; %node at mid point
 [~,eids]=find(connec(1:4,:)==nid); % elem ids sharing node nid
 presq=mean(pres(:,eids),2); % taking node pressure as average of those of surrounding elems
 
@@ -216,7 +217,7 @@ txt=compose('P Node %d',nid);
 text(ax,0.01e-3,0,{'$\uparrow$ compression'},'VerticalAlignment','bottom');
 text(ax,0.01e-3,0,{'$\downarrow$ tension'},'VerticalAlignment','top');
 ylabel(ax,'Pressure [Pa]');
-set(ax.YAxis,'TickLabelFormat','%.1f');
+set(ax.YAxis,'Exponent',6,'TickLabelFormat','%.1f');
 
 yyaxis(ax,"right");
 ydata=-nodout.y_velocity(:,nid);
