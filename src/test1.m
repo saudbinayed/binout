@@ -217,7 +217,7 @@ txt=compose('P Node %d',nid);
 text(ax,0.01e-3,0,{'$\uparrow$ compression'},'VerticalAlignment','bottom');
 text(ax,0.01e-3,0,{'$\downarrow$ tension'},'VerticalAlignment','top');
 ylabel(ax,'Pressure [Pa]');
-set(ax.YAxis,'Exponent',6,'TickLabelFormat','%.1f');
+set(ax.YAxis,'Exponent',9,'TickLabelFormat','%.1f');
 
 yyaxis(ax,"right");
 ydata=-nodout.y_velocity(:,nid);
@@ -327,7 +327,7 @@ txt=compose('P(%g,%g), Node %d',[xq,yq,nid']);
 legend(ax,txt,'Location','northeast');
 xlabel(ax,'Time [s]'); ylabel(ax,'Pressure [Pa]');
 set([ax.XAxis],'Exponent',-3,'TickLabelFormat','%.2f');
-set(ax.YAxis,'Exponent',6,'TickLabelFormat','%.1f');
+set(ax.YAxis,'Exponent',9,'TickLabelFormat','%.1f');
 ax=tidyAxes(ax);
 figFileName=[folderName,'/','pressure_near_edges_and_mid'];
 fig=printFig(fig,figFileName,["pdf","svg"]);
