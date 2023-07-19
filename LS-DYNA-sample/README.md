@@ -11,8 +11,7 @@ are written to a `binout` file after the model was run.
 A simple input model was chosen for brevity. It consists of a small rigid impactor (Part 4 in the figure) that is moving downward with a high initial velocity and hitting
 a larger deformable solid (Part 3 in the figure) from above, which was initially at rest. The layout of the bodies just before impact is shown below:
 
-<img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="400"/>
-![input model set-up](../figs/initial_geometry_with_labels.svg)
+<img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="400" style="margin:0 auto;"/>
 
 The model includes a typical (frictionless) contact definition to account for the impact event. 
 During the impact, the initial kinetic energy of the moving impactor diminshes as partial momentum is transferred to the larger deformable body. The 
