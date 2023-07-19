@@ -34,14 +34,14 @@ The root `binout` file is the first if there are more than one binout file. The 
 
 | Arg | Type | Desc | Required? |
 |:--- |:---  |:---  |:---       |
-| `binin` | Matlab `struct`  | A Matlab structure containing all result data in the `binout` file(s) |   |
+| `binin` | MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |   |
 
 
 This is a scalar but highly nested structure. Use the "." (dot) indexing method in MATLAB to traverse the `binin` structure in order to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control". 
 
 Every root field is itself a scaler structure. Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data". 
 
-For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on. See the [`figs/graphs`](/figs/graphs/) folder, for examples of content and organisation of the `binin` struct. 
+For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on. See the [`figs/graphs`](/figs/graphs/) folder, for content and organisation of a sample `binin` struct. 
 
 The actual result (i.e. state) data are contained in the "data" structure as its fields, the names of which are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.
 
@@ -54,11 +54,9 @@ The values associated with the fields of the "data" structure are in general 2D 
 time instants (so that the number of rows equal the number of entries of the time vector). The columns of the 2D arrays correspond to the IDs of the entities (like parts, nodes, etc), which (again) are generally found in the "metadata" structure. However, the IDs of elements and
 contacts are stored directly in the "data" structure itself. The columns of the 2D arrays in the "data" structures in the "elout" database (say "elout.shell") correspond to elements IDs (stored in "ids") _and_ their integration points (the number of which is stored in a field called "nip").
 
-Again, fields' names in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
-As exceptions, some fields in the "data" structure for the substructures of "elout" may need interpretations as they are abbreviated. The stresses are 
-abbreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"). Likewise, strains are abbreviated by "eps_xx" and so on ("eps" for "epsilon"). The effective plastic strain is 
-either denoted by "yield" (for "solid" and "tshell"),"plastic_strain" (for "shell") or "plastic_eps" (for "beam"). Effective von-Mises stress (if available) is denoted by "effsg".
-For shells, "upper_" and "lower_" are used as pre-fixes to refer to upper-most and lower-most layers. 
+In general, fields' names in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
+Although, few fields in the "data" structure for the substructures of "elout" are abbreviated.Stresses are 
+abbreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"), and, strains are abbreviated by "eps_xx" and so on ("eps" for "epsilon"). 
 
 Lastly, the structuring and naming of fields are directly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
 then there is no need to make further explaination since (in this case) the `binin` structure should be very familiar too. 
@@ -74,7 +72,7 @@ a scalar (possibly highly nested) MATLAB structure as the first input argument, 
 To make LS-DYNA writes the results of your interest to one (or more) `binout` file(s), follow the following steps:
 1. In the input keyword file, add one or more database keywords of the form `*database_<option>`, where `<option>` is the database type, e.g. `matsum`, `nodout`, etc.
    1. In each database keyword, set the value of `BINARY` (second field of first card) to `2`, to tell LS-DYNA to add this database to the binout file.
-1. For certain kinds of database types, you need to add some required database keywords of the type `database_history_<options>` to specify which entities to include in that database, e.g. nodes, elements, and so on. 
+1. For certain kinds of database types, you need to add some required database keywords of the type `*database_history_<options>`, `*database_sensor`, `*database_nodal_group` to specify which entities to include in that database, e.g. nodes, elements, sensors and so on. 
 1. Run your model, and LS-DYNA should generate one (or more) `binout` files 
 
 The first of these files is named as `binout`, which is called the root file. The number of generated binout files, by default, is about `ceil(overallSize/1)`, where `overallSize` is the total size of requested data in gigabytes (GB).
