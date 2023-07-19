@@ -301,8 +301,35 @@ fig=printFig(fig,figFileName,["pdf","svg"]);
 
 
 
+%%
+yq=[0,0.2,0.4];
+xq=repmat(0.5,size(yq));
 
+[~,idq]=min(sqrt((x0-xq).^2+(y0-yq).^2));
+% idq=idq(1); 
+xq=x0(idq); yq=y0(idq); % actual coordinate of node
+nid=Nids(idq); % actual id of node
+nid=double(nid);
+pid=1;
+[~,eidx]=ismember(connec(1:4,connec(end,:)==pid),nid); % elem ids sharing node nid
+pres1=pres(:,connec(end,:)==pid);
+presq=zeros(length(t),length(nid));
+for i=1:length(nid)
+    [~,eids]=find(eidx==i);
+    presq(:,i)=mean(pres1(:,eids),2); % Note: for surface nodes, this is without extrapolation, i.e. pressures = nearest integration point vertically.
+end
 
+figure(7); clf; cla;
+fig=gcf; ax=gca;
+plot(ax,t,presq);
+txt=compose('P(%g,%g), Node %d',[xq,yq,nid']);
+legend(ax,txt,'Location','northeast');
+xlabel(ax,'Time [s]'); ylabel(ax,'Pressure [Pa]');
+set([ax.XAxis],'Exponent',-3,'TickLabelFormat','%.2f');
+set(ax.YAxis,'Exponent',6,'TickLabelFormat','%.1f');
+ax=tidyAxes(ax);
+figFileName=[folderName,'/','pressure_near_edges_and_mid'];
+fig=printFig(fig,figFileName,["pdf","svg"]);
 
 
 
