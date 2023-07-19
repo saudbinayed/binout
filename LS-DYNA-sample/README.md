@@ -72,7 +72,8 @@ example. The script also provide the MATLAB code to generate result plots, model
 Matlab script can be found in the [figs](../figs/) and [videos](../videos/) folders.
 
 ### kinetic energy graph
-![Energies plot](../figs/energies.svg) 
+<!--![Energies plot](../figs/energies.svg)-->
+<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="60%"/></p>
 In the legend, (KE): kinetic energy, (IE): internal energy, (HGE): hourglass energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
@@ -84,7 +85,8 @@ Note: we used the zero-kinetic energy of a part to define the full contact insta
 
 
 ### model animation
-![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)
+<!--![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)-->
+<p align="center"><img alt="animation of small impactor hitting a stand-still large body" src="../videos/impact_color_resultant_vel.gif" width="60%"/></p>
 
 Colors correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
 Therefore, this animation precisely shows the evolution (transport) of kinetic energy density (energy per unit volume) because this energy density is proportional to the square of the resultant velocity, $k=\frac{1}{2} \rho (\dot{u}_x^2 +\dot{u}_y^2)$.
