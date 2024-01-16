@@ -51,7 +51,7 @@ For example, the "binin.matsum" structure will have the fields `metadata` and `d
 The root field "control" under the `binin` structure contains supplementary control data retrieved from the root `d3plot` file, which is provided by (internally) calling the `get_d3plot_d3thdt_control_data()` helper function. The binout reader function will auto-detect the root d3plot file. Among the control data retrieved are the element-node connectivity arrays and some others (like the initial geometry and useful info about the model).
 
 #### notes
-The values associated with the fields of the "data" structure are in general 2D arrays except "time" (which is always a column vector). Rows of the 2D arrays correspond to 
+The values associated with the fields of the `data` structure are in general 2D arrays except "time" (which is always a column vector). Rows of the 2D arrays correspond to 
 time instants (so that the number of rows equal the number of entries of the time vector). The columns of the 2D arrays correspond to the IDs of the entities (like parts, nodes, etc), which (again) are generally found in the "metadata" structure. However, the IDs of elements and
 contacts are stored directly in the "data" structure itself. The columns of the 2D arrays in the "data" structures in the "elout" database (say "elout.shell") correspond to elements IDs (stored in "ids") _and_ their integration points (the number of which is stored in a field called "nip").
 
