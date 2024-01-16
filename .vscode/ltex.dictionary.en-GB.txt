@@ -2,3 +2,8 @@ binout
 matsum
 nodout
 elout
+binin
+xy
+eps
+LS-PrePost
+BIN-ary

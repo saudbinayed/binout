@@ -39,7 +39,7 @@ The root `binout` file is the first if there are more than one binout file. The 
 This is a scalar but highly nested structure. Use the "." (dot) indexing method in `MATLAB` to traverse the `binin` structure in order to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control". 
 
 All fields of the main `binin` structure are scalar structures themselves. In general, each of these structures contains exactly two fields: "data" and "metadata", each of which is also a structure. 
-The fields of the "data" structure are the actual result (state) data of interest. Among the fields of the "metadata" structure is a field called "ids" that stores the IDs of the model entities, e.g nodes, parts, etc.
+The fields of the "data" structure are the actual result (state) data of interest. Among the fields of the "metadata" structure is a field called "ids" that stores the IDs of the model entities, e.g. nodes, parts, etc.
 However, some fields of the `binin` have intermediate structures under them, and the "data" and "metadata" are fields of those intermediate structures. 
 
 <!--Every root field is itself a scaler structure. Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data".-->
@@ -53,16 +53,16 @@ For example, the "binin.matsum" structure will have the fields "metadata" and "d
 The root field "control" under the `binin` structure contains supplementary control data retrieved from the root `d3plot` file, which is provided by (internally) calling the `get_d3plot_d3thdt_control_data()` helper function. The binout reader function will auto-detect the root d3plot file. Among the control data retrieved are the element-node connectivity arrays and some others (like the initial geometry and useful info about the model).
 
 #### notes
-The values associated with the fields of the "data" structure are in general 2D arrays  except "time" (which is always a column vector). Rows of the 2D arrays correspond to 
+The values associated with the fields of the "data" structure are in general 2D arrays except "time" (which is always a column vector). Rows of the 2D arrays correspond to 
 time instants (so that the number of rows equal the number of entries of the time vector). The columns of the 2D arrays correspond to the IDs of the entities (like parts, nodes, etc), which (again) are generally found in the "metadata" structure. However, the IDs of elements and
 contacts are stored directly in the "data" structure itself. The columns of the 2D arrays in the "data" structures in the "elout" database (say "elout.shell") correspond to elements IDs (stored in "ids") _and_ their integration points (the number of which is stored in a field called "nip").
 
-In general, fields' names in "data" and "metadata" are explicit and self-explainatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
+In general, fields' names in "data" and "metadata" are explicit and self-explanatory (e.g. "kinetic_energy", "time", "x_velocity", "x_displacement", etc). 
 Although, few fields in the "data" structure for the substructures of "elout" are abbreviated. Stresses are 
 abbreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"), and, strains are abbreviated by "eps_xx" and so on ("eps" for "epsilon"). 
 
 Lastly, the structuring and naming of fields are directly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in LS-PrePost, 
-then there is no need to make further explaination since (in this case) the `binin` structure should be very familiar too. 
+then there is no need to make further explanation since (in this case) the `binin` structure should be very familiar too. 
 
 The [`figs/graphs`](/figs/graphs/) folder contains several example contents (as visual graphs) of a `binin` structure and its children. 
 
@@ -83,13 +83,13 @@ The first of these files is named as `binout`, which is called the root file. Th
 ### final remarks
 The aim of the work presented herein is to make working with `LS-DYNA` results easier for engineers and researchers, so please let us know if you encounter any 
 problems or if you need additional clarifications about how to make this work in real use.  We also would like to explain choosing the word "binin": it is meant 
-to be read as BINary output of `LS-DYNA` IN `MATLAB`. That is, `binin` contains the output (results) from `LS-DYNA`.  
+to be read as BIN-ary output of `LS-DYNA` IN `MATLAB`. That is, `binin` contains the output (results) from `LS-DYNA`.  
 
 
 ## motivations
 The work is shared for three aims:
 + Help (engineers and researchers) :heart: to easily work with `LS-DYNA` results.
-+ Enrich `MATLAB` by affording a tool to import real-world data from world class FEA solver (`LS-DYNA`).
++ Enrich `MATLAB` by affording a tool to import real-world data from world-class FE solver (`LS-DYNA`).
 + Extend `LS-DYNA` by allowing users to make use of the very powerful tools in `MATLAB` to perform additional post-processing calculations and generate graphics with publication-quality to share with others. 
 
 We hope the work will be useful.
