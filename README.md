@@ -24,7 +24,8 @@ The formal syntax is
 | Argument | Type | Description | Required? |
 |:--- |:---  |:---  |:---       |
 | `binout_filename` | [`char`\|`string`] | (relative or absolute) path of the root `binout` file | Yes |
-There is only 1 input argument.
+
+*There is only 1 input argument.
 
 The root `binout` file is the first if there are more than one binout file. The function is configured to auto-detect and read all files sequentially. Data from these files will be joined. 
 
@@ -32,7 +33,8 @@ The root `binout` file is the first if there are more than one binout file. The 
 | Argument | Type | Description | Required? |
 |:--- |:---  |:---  |:---       |
 | `binin` | MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |  - |
-There is only 1 output argument.
+
+*There is only 1 output argument.
 
 This is a scalar but highly nested structure. Use the "." (dot) indexing method in `MATLAB` to traverse the `binin` structure in order to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control". 
 
