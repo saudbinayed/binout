@@ -31,7 +31,6 @@ The formal syntax is
 The root `binout` file is the first if there are more than one binout file. The function is configured to auto-detect and read all files sequentially. Data from these files will be joined. 
 
 #### outputs:
-
 | Argument | Type | Description | Required? |
 |:--- |:---  |:---  |:---       |
 | `binin` | MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |   |
