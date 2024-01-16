@@ -1,8 +1,8 @@
 # binout
 `MATLAB` functions to work with `LS-DYNA` `binout` files:
 * The function `get_binout_data()`, called the binout reader, reads result (or state) data from the binout file.
-* The function `get_d3plot_d3thdt_control_data()` is a helper function and is called (internally) from within the binout reader function to retreive important control data from the root `d3plot` file (if available)
-* The function `struct2graph()` is a standalone function and can be used (for convenience) to graphically display the content and hierarchy of a nested MATALB `struct`. 
+* The function `get_d3plot_d3thdt_control_data()` is a helper function and is called (internally) from within the binout reader function to retrieve important control data from the root `d3plot` file (if available)
+* The function `struct2graph()` is a standalone function and can be used (for convenience) to graphically display the content and hierarchy of a nested `MATALB` `struct`. 
 
 The `MATLAB` source files of the functions are in the [`src`](/src/) folder. Additionally, sample `LS-DYNA` files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the `binout` is about 78 MB) and use the `MATLAB` script `test1.m` in the `src` folder to get started. 
 
@@ -21,20 +21,18 @@ The formal syntax is
 [binin] = get_binout_data(binout_filename)
 ```
 #### inputs:
-
-
 | Argument | Type | Description | Required? |
 |:--- |:---  |:---  |:---       |
 | `binout_filename` | [`char`\|`string`] | (relative or absolute) path of the root `binout` file | Yes |
-
+There is only 1 input argument.
 
 The root `binout` file is the first if there are more than one binout file. The function is configured to auto-detect and read all files sequentially. Data from these files will be joined. 
 
 #### outputs:
 | Argument | Type | Description | Required? |
 |:--- |:---  |:---  |:---       |
-| `binin` | MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |   |
-
+| `binin` | MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |  - |
+There is only 1 output argument.
 
 This is a scalar but highly nested structure. Use the "." (dot) indexing method in `MATLAB` to traverse the `binin` structure in order to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control". 
 
@@ -44,7 +42,7 @@ However, some fields of the `binin` have intermediate structures under them, and
 
 <!--Every root field is itself a scaler structure. Some kinds of root structures will have intermediate sub-structures (as in the `binout` file). At some level, there will be idnentically two structures: "metadata" and "data".-->
 
-For example, the "binin.matsum" structure will have the fields "metadata" and "data" as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on. See the [`figs/graphs`](/figs/graphs/) folder, for content and organisation of a sample `binin` struct. 
+For example, the "binin.matsum" structure will have the fields `metadata` and `data` as its immediate fields. On the other hand, the "binin.elout" structure will contain intermediate fields like "shell", "solid", etc. In this case, the "metadata" and "data" structures are fields of "binin.elout.shell", "binin.elout.solid", and so on. See the [`figs/graphs`](/figs/graphs/) folder, for content and organisation of a sample `binin` struct. 
 
 <!--The actual result (i.e. state) data are contained in the "data" structure as its fields, the names of which are borrowed directly from the original `binout` file that are practically self-explainatory. All data under the "data" structure are converted to `double` (floats with 64 bits) for unification reasons.-->
 
