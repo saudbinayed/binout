@@ -12,12 +12,12 @@ function [binin]=get_binout_data(binout_filename)
 %% Output:
 % binin is struct scalar with fields like "matsum", "nodout", "elout",etc.
 % Some fields have intermediate sub-fields under them.
-% At some level you get 2 fields "data" and "meta":
+% At some level you get 2 fields "data" and "metadata":
 % ... the "data" contains sub-fields named based on what they represent (mechanically, as given in the binout by lsdyna)
-% ... the "meta" contains sub-fields named based on what they represent (from lsdyna)
-% Example: binin.matsum has immediate fields: "data" and "meta"
+% ... the "metadata" contains sub-fields named based on what they represent (from lsdyna)
+% Example: binin.matsum has immediate fields: "data" and "metadata"
 % Example: binin.elout has (possibly) the intermediate fields: "solid","shell","thickshell","beam","solid_hist","shell_hist",
-% ... and "thickshell_hist". The binin.elout.solid is the one that has the sub-fields "data" and "meta", and so on.
+% ... and "thickshell_hist". The binin.elout.solid is the one that has the sub-fields "data" and "metadata", and so on.
 % ======================================
 % If the directory containing the root binout file contains a root "d3plot" file, the function will auto detect it and read
 % ... additional useful "control" data and append them to a field called "control" in the main binin struct. For example, the 
