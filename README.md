@@ -4,7 +4,7 @@
 * The function `get_d3plot_d3thdt_control_data()` is a helper function and is called (internally) from within the binout reader function to retrieve important control data from the root `d3plot` file (if available)
 * The function `struct2graph()` is a standalone function and can be used (for convenience) to graphically display the content and hierarchy of a nested `MATALB` `struct`. 
 
-The `MATLAB` source files of the functions are in the [`src`](/src/) folder. Additionally, sample `LS-DYNA` files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the `binout` is about 78 MB) and use the `MATLAB` script `test1.m` in the `src` folder to get started. 
+The `MATLAB` source files of the functions are in the [`src`](/src/) folder. Additionally, sample `LS-DYNA` files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the provided sample `binout` file is about 78 MB) and use the `MATLAB` script `test1.m` in the `src` folder to get started. 
 
 ## The `binout` Reader Function
 ### What It Does?
@@ -61,9 +61,9 @@ Although, a few fields in the "data" structure for the substructures of "elout" 
 abbreviated by "sig_xx", "sig_xy", etc ("sig" for "sigma"), and, strains are abbreviated by "eps_xx" and so on ("eps" for "epsilon"). 
 
 Lastly, the structuring and naming of fields are directly borrowed from the `binout` file. So, if one is already familiar with opening `binout` files in [LS-PrePost](https://lsdyna.ansys.com/knowledge-base/ls-prepost/), 
-then there is no need to make further explanation since (in this case) the `binin` structure should be very familiar too. The behaviour is also valid. You need to analyse it first.
+then there is no need to make further explanation as, in this case, the `binin` structure should be very familiar too.
 
-The [`figs/graphs`](/figs/graphs/) folder contains several example contents (as visual graphs) of a `binin` structure and its children. 
+The [`figs/graphs`](/figs/graphs/) folder contains several example contents (as visual graphs) of a sample `binin` structure and its children. 
 
 #### Optional Feature
 If needed, one can use the standalone function `struct2graph()` to visually display the hierarchy map of the `binin` structure. The function accepts 
@@ -73,7 +73,7 @@ a scalar (possibly highly nested) `MATLAB` structure as the first input argument
 ### How to Get a `binout` File?
 To make `LS-DYNA` writes the results of your interest to one (or more) `binout` file(s), follow the following steps:
 1. In the input keyword file, add one or more database keywords of the form `*database_<option>`, where `<option>` is the database type, e.g. `matsum`, `nodout`, etc.
-   1. In each database keyword, set the value of `BINARY` (second field of first card) to `2`, to tell `LS-DYNA` to add this database to the binout file.
+   + In each database keyword, set the value of `BINARY` (second field of first card) to `2`, to tell `LS-DYNA` to add this database to the binout file.
 1. For certain kinds of database types, you need to add some additional database keywords to activate those database types. See [`lsdyna_database`](/lsdyna_database.md) for more details. 
 1. Run your model, and `LS-DYNA` should generate one (or more) `binout` files. 
 
