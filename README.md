@@ -109,5 +109,5 @@ Developed by:
 
 Sponsors:
 <!-- <p align="center"> -->
-<img alt="Energies plot" src="./figs/logos/UOSLogo_Primary_Violet_RGB.svg" height="70px" style="margin:15px;"/> <img alt="Energies plot" src="./figs/logos/Qassim_University_logo.svg" height="70px" style="margin:15px;"/> 
+<img alt="Energies plot" src="./figs/logos/UOSLogo_Primary_Violet_RGB.svg" height="70px" style="margin:30px;"/> <img alt="Energies plot" src="./figs/logos/Qassim_University_logo.svg" height="70px" style="margin:15px;"/> 
 <!-- </p> -->
