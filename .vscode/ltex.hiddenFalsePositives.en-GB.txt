@@ -1,0 +1,1 @@
+{"rule":"EN_QUOTES","sentence":"^\\QThe columns of the 2D arrays in the \"data\" structures in the \"elout\" database (say \"elout.shell\") correspond to elements IDs (stored in \"ids\") and their integration points (the number of which is stored in a field called \"nip\").\\E$"}

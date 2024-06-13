@@ -24,9 +24,9 @@ function [binin]=get_binout_data(binout_filename)
 % ... the input mesh and element-node connectivity data are retrieved by this feature.
 %========================================
 %% Contributions: 
-% Code is part of a PhD study at the Blast and Impact Engineering Reserach Group, the University of Sheffield (2024)
-% Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk, https://x.com/dr_samrigby)
-% Saud A. E. Alotaibi (salotaibi2@sheffield.ac.uk, otaibi.28@qec.edu.sa, https://x.com/saudbinayed)
+% Code is part of a PhD study at the Blast and Impact Dynamics Research Group at the University of Sheffield (2024)
+% Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk; https://x.com/dr_samrigby)
+% Saud A. E. Alotaibi (salotaibi2@sheffield.ac.uk; otaibi.28@qec.edu.sa; https://x.com/saudbinayed)
 %========================================
 % to debug: (1) comment first line of code, then (2) uncomment below
 % clear;
