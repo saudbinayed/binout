@@ -97,7 +97,7 @@ We hope the work will be useful.
 This work is part of a PhD study at the [Blast and Impact Dynamics Research Group](https://twitter.com/SheffieldBlast), 
 at the [University of Sheffield](https://sheffield.ac.uk) (2024)
 
-supervised by:  
+Supervised by:  
 + Prof. Andrew Tyas (a.tyas@sheffield.ac.uk)
 + Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk; [@Dr_SamRigby](https://twitter.com/Dr_SamRigby))
 + Dr. Maurizio Guadagnini (m.gaudagnini@sheffield.ac.uk)
@@ -106,3 +106,8 @@ Developed by:
 + Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk;[@Dr_SamRigby](https://twitter.com/Dr_SamRigby))
 + Saud A. E. Alotaibi (salotaibi2@sheffield.ac.uk; [@saudbinayed](https://twitter.com/saudbinayed)), sponsored by [Qassim University](https://qu.edu.sa), Saudi Arabia, and the Saudi Arabian Cultural Bureau in London, the United Kingdom.
 
+
+Sponsors:
+<!-- <p align="center"> -->
+<img alt="Energies plot" src="./figs/logos/UOSLogo_Primary_Violet_RGB.svg" height="70px" style="margin:15px;"/> <img alt="Energies plot" src="./figs/logos/Qassim_University_logo.svg" height="70px" style="margin:15px;"/> 
+<!-- </p> -->
