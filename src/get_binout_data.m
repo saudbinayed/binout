@@ -59,7 +59,7 @@ for j0=1:length(family)
     frewind(fid);
     fseek(fid,35,'bof');
     address=ftell(fid);
-    pause(1/10000);
+    pause(1/10000); % only made to be safe for emergency termination (if ctrl+C, for some reason, is pressed!)
     %
     % Reading all data from this single binout:
     while address<file_sz 
@@ -113,6 +113,7 @@ for j0=1:length(family)
         elseif typ<11
             prec=dtypeDict(typ);
             if initQ==true
+                %initialise with initSize to pre-allocate memory (performance-related). To be removed at the end
                 binin.(dir0).(field)(state:stateLimMax,:)=zeros(initSize,length(data(12-4+len:end))/conFacDict(prec),prec);
             end
             binin.(dir0).(field)(state,:)=typecast(uint8(data(12-4+len:end)),prec);
@@ -141,7 +142,7 @@ for j1=1:length(fields)
     for j2=1:length(subfields)
         field0=subfields{j2};
         if field0~="state_max"
-            binin.(dir0).(field0)(binin.(dir0).state_max+1:end,:)=[];
+            binin.(dir0).(field0)(binin.(dir0).state_max+1:end,:)=[]; %removing unused entries during initialisation.
             binin.(dir0).(field0)=double(binin.(dir0).(field0));
         end
     end
