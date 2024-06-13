@@ -100,7 +100,7 @@ as with the kinetic energy of the (impacted upon) deformable solid; the internal
 (the sum of energies of the deformable solid must be equal to the net enegies of the impactor, before and after the impact).-->
 
 ### Notes
-The model is 3D, but it was represented and solved as 2D according to the assumption of plane-strain. Plain strain applies to cases where the third dimension (out-of-plane) is infinite, and hence there are no displacements and strains along that dimension.
+The physical problem is 3D, but it was represented and solved as 2D according to the assumption of plane-strain. The plane-strain condition applies to cases where the third dimension (out-of-plane) is infinite, and hence there are no displacements and strains along that dimension.
 We confined ourselves to a slice of unit thickness (in the third dimension). Therefore, all quantities are reported in absolute units (i.e. we dropped the "per unit" thickness for the energies). 
 
   
