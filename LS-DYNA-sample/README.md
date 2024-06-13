@@ -72,7 +72,7 @@ example. The script also provides the `MATLAB` code to generate result plots, mo
 
 ### Energies Graph
 <!--![Energies plot](../figs/energies.svg)-->
-<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="75%"/></p>
+<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="45%"/></p>
 In the legend, (KE): kinetic energy, (IE): internal energy, (HGE): hourglass energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
