@@ -97,7 +97,8 @@ We hope the work will be useful.
 This work is part of a PhD study at [The Blast and Impact Dynamics Research Group](https://twitter.com/SheffieldBlast), 
 at [The University of Sheffield](https://sheffield.ac.uk) (2024).
 
-The source code of the `MATLAB` functions, included in this repo, are also published in The University of Sheffield's online research data (ORDA) repository, and publicly available at [https://doi.org/10.15131/shef.data.26018836](https://doi.org/10.15131/shef.data.26018836)
+The source code of the `MATLAB` functions, included in this repo, are also published in The University of Sheffield's online research data (ORDA) repository and are publicly available at:
+[https://doi.org/10.15131/shef.data.26018836](https://doi.org/10.15131/shef.data.26018836)
 
 
 Supervised by:  
