@@ -28,5 +28,5 @@
 *.xlsx binary
 
 ## LS-DYNA binary
-*d3plot
-*binout
+*d3plot binary
+*binout binary
