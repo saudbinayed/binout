@@ -1,1 +1,0 @@
-{"rule":"MORFOLOGIK_RULE_EN_NZ","sentence":"\\Q@.+\\E"}
