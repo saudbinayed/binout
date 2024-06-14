@@ -94,8 +94,11 @@ The work is shared for three aims:
 We hope the work will be useful. 
 
 ## Contributions
-This work is part of a PhD study at the [Blast and Impact Dynamics Research Group](https://twitter.com/SheffieldBlast), 
-at the [University of Sheffield](https://sheffield.ac.uk) (2024)
+This work is part of a PhD study at [The Blast and Impact Dynamics Research Group](https://twitter.com/SheffieldBlast), 
+at [The University of Sheffield](https://sheffield.ac.uk) (2024).
+
+The source code of the `MATLAB` functions, included in this repo, are also published in The University of Sheffield's online research data (ORDA) repository, and publicly available at [https://doi.org/10.15131/shef.data.26018836](https://doi.org/10.15131/shef.data.26018836)
+
 
 Supervised by:  
 + Prof. Andrew Tyas (a.tyas@sheffield.ac.uk)
@@ -104,7 +107,7 @@ Supervised by:
 
 Developed by:
 + Dr. Samuel E. Rigby (sam.rigby@sheffield.ac.uk;[@Dr_SamRigby](https://twitter.com/Dr_SamRigby))
-+ Saud A. E. Alotaibi (salotaibi2@sheffield.ac.uk; [@saudbinayed](https://twitter.com/saudbinayed)), sponsored by [Qassim University](https://qu.edu.sa), Saudi Arabia, and the Saudi Arabian Cultural Bureau in London, the United Kingdom.
++ Saud A. E. Alotaibi (otaibi.28@qec.edu.sa; salotaibi2@sheffield.ac.uk; [@saudbinayed](https://twitter.com/saudbinayed)), sponsored by [Qassim University](https://qu.edu.sa), Saudi Arabia, and the Saudi Arabian Cultural Bureau in London, the United Kingdom.
 
 
 Sponsors:
