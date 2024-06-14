@@ -27,6 +27,7 @@
 *.png binary
 *.xlsx binary
 
-## LS-DYNA binary
+## LS-DYNA
 *d3plot binary
 *binout binary
+*.k text eol=lf
