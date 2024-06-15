@@ -1,0 +1,2 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<Info description="Provide MATLAB functions to read and work with LS-DYNA binout files. A binout is a binary file containing various result databases of an LS-DYNA model. "/>
