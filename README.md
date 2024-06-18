@@ -1,10 +1,10 @@
 # `binout`
 `MATLAB` functions to work with `LS-DYNA` `binout` files:
-* The function `get_binout_data()`, called the binout reader, reads result (or state) data from the binout file.
-* The function `get_d3plot_d3thdt_control_data()` is a helper function and is called (internally) from within the binout reader function to retrieve important control data from the root `d3plot` file (if available)
-* The function `struct2graph()` is a standalone function and can be used (for convenience) to graphically display the content and hierarchy of a nested `MATALB` `struct`. 
+* The function [`get_binout_data()`](./src/get_binout_data.m), called the binout reader, reads result (or state) data from the binout file.
+* The function [`get_d3plot_d3thdt_control_data()`](./src/get_d3plot_d3thdt_control_data.m) is a helper function and is called (internally) from within the binout reader function to retrieve important control data from the root `d3plot` file (if available)
+* The function [`struct2graph()`](./src/struct2graph.m) is a standalone function and can be used (for convenience) to graphically display the content and hierarchy of a nested `MATALB` `struct`. 
 
-The `MATLAB` source files of the functions are in the [`src`](/src/) folder. Additionally, sample `LS-DYNA` files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the provided sample `binout` file is about 78 MB) and use the `MATLAB` script `test1.m` in the [`src`](/src/) folder to get started. 
+The `MATLAB` source files of the functions are in the [`src`](/src/) folder. Additionally, sample `LS-DYNA` files are provided in the [`LS-DYNA-sample`](/LS-DYNA-sample/) folder. You can download these files (note: the provided sample `binout` file is about 78 MB) and use the `MATLAB` script [`test1.m`](./src/test1.m) in the [`src`](/src/) folder to get started. 
 
 ## The `binout` Reader Function
 ### What It Does?
