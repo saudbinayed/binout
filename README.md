@@ -31,7 +31,7 @@ The root `binout` file is the first if there are more than one binout file. The 
 #### Output:
 | Argument | Type | Description | Required? |
 |:--- |:---  |:---  |:---       |
-| `binin` | MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |  - |
+| `binin` | scalar MATLAB `struct`  | A MATLAB structure containing all result data in the `binout` file(s) |  - |
 
 *There is only 1 output argument.
 
