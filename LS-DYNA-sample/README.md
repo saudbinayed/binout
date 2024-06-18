@@ -12,7 +12,7 @@ A simple input model was chosen for brevity. It consists of a small rigid impact
 a larger deformable solid (Part 3 in the figure) from above, which was initially at rest. The layout of the bodies just before impact is shown below:
 
 <!-- <p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="75%"/></p> -->
-<figure style="margin:0 auto; width:300px">
+<figure width="30%" style="margin:0 auto; width:300px">
 <img alt="input model setup" src="../figs/initial_geometry_with_labels.svg">
 <figcaption><b>Fig 1:&emsp;</b> Input Model's Geometry.</figcaption>
 </figure>
