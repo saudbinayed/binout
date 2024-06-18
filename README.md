@@ -35,7 +35,7 @@ The root `binout` file is the first if there are more than one binout file. The 
 
 *There is only 1 output argument.
 
-This is a scalar but highly nested structure. Use the "." (dot) indexing method in `MATLAB` to traverse the `binin` structure to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last n<sup>th</sup> field (when available) is called "control". 
+This is a scalar but highly nested structure. Use the "." (dot) indexing method in `MATLAB` to traverse the `binin` structure to arrive at a data of interest. The returned `binin` structure will have `n` root fields, where (`n-1`) is the number of databases contained in the `binout` file(s), such as "matsum", "nodout", etc. The last `n`<sup>th</sup> field (when available) is called "control". 
 
 All fields of the main `binin` structure are scalar structures themselves. In general, each of these structures contains exactly two fields: "data" and "metadata", each of which is also a structure. 
 The fields of the "data" structure are the actual result (state) data of interest. Among the fields of the "metadata" structure is a field called "ids" that stores the IDs of the model entities, e.g. nodes, parts, etc.
