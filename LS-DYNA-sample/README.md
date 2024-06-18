@@ -11,11 +11,11 @@ are written to a `binout` file after the model was run.
 A simple input model was chosen for brevity. It consists of a small rigid impactor (Part 4 in the figure) that is moving downward with a high initial velocity and hitting
 a larger deformable solid (Part 3 in the figure) from above, which was initially at rest. The layout of the bodies just before impact is shown below:
 
-<!-- <p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="75%"/></p> -->
-<figure width="30%" style="margin:0 auto; width:300px">
+<p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="75%"/><br>**Fig 1** </p>
+<!-- <figure width="30%" style="margin:0 auto; width:300px">
 <img alt="input model setup" src="../figs/initial_geometry_with_labels.svg">
 <figcaption><b>Fig 1:&emsp;</b> Input Model's Geometry.</figcaption>
-</figure>
+</figure> -->
 
 
 The model includes a typical (frictionless) contact definition to account for the impact event. 
