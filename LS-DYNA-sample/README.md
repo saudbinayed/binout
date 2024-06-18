@@ -79,7 +79,7 @@ example. The script also provides the `MATLAB` code to generate result plots, mo
 
 ### Energies Graph
 <!--![Energies plot](../figs/energies.svg)-->
-<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="75%"/></p>
+<p align="center"><img alt="Energies plot" src="../figs/energies.svg" width="75%"/><br><b>Fig 2:&emsp;</b>Energy Time Histories . </p>
 In the legend, (KE): kinetic energy, (IE): internal energy, (HGE): hourglass energy.
 
 From the above figure and the time history of the kinetic energy (KE) of Part 4:
@@ -92,9 +92,9 @@ Note: we used the zero-kinetic energy of a part to define the full contact insta
 
 ### Model's Animation
 <!--![animation of small impactor hitting a stand-still large body](../videos/impact_color_resultant_vel.gif)-->
-<p align="center"><img alt="animation of small impactor hitting a stand-still large body" src="../videos/impact_color_resultant_vel.gif" width="75%"/></p>
+<p align="center"><img alt="animation of small impactor hitting a stand-still large body" src="../videos/impact_color_resultant_vel.gif" width="75%"/><br><b>Fig 3:&emsp;</b>Time-Dependent Resultant Velocity Fringe </p>
 
-Colours correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the j<sup>th</sup> direction. 
+Colours correspond to values of the resultant velocity, which is (for a 2D problem) given by $\sqrt{\dot{u}_x^2 +\dot{u}_y^2}$, where $\dot{u}_j$ is the velocity component in the $j$<sup>th</sup> direction. 
 Therefore, this animation precisely shows the evolution (transport) of kinetic energy density (energy per unit volume) because this energy density is proportional to the square of the resultant velocity, $k=\frac{1}{2} \rho (\dot{u}_x^2 +\dot{u}_y^2)$.
 In addition, gradients in colours indicate gradient of velocity, which in turn indicate strain rates; most practical materials are sensitive to high strain rates such that the material becomes stronger (its strength increases).
 
