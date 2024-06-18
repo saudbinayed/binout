@@ -98,7 +98,7 @@ to be read as `BIN`-ary output of ls-dyna `IN` matlab. That is, `binin` contains
 
 ## Motivation
 The work is shared to:
-+ Help engineers and researchers :heart: to easily work with `LS-DYNA` results. So, please let us know if you encounter any 
++ Help engineers and researchers :heart: to easily work with `LS-DYNA` results. So, please let us know (in [issues](https://github.com/saudbinayed/binout/issues) or [discussions](https://github.com/saudbinayed/binout/discussions)) if you encounter any 
 problem or if you need additional clarifications.
 + Enrich `MATLAB` by affording a tool to import real-world data from world-class FE solver (`LS-DYNA`).
 + Extend `LS-DYNA` by allowing users to make use of the powerful tools in `MATLAB` to perform additional post-processing calculations and generate graphics with publication-quality to share with others. 
