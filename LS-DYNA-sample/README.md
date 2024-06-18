@@ -12,9 +12,9 @@ A simple input model was chosen for brevity. It consists of a small rigid impact
 a larger deformable solid (Part 3 in the figure) from above, which was initially at rest. The layout of the bodies just before impact is shown below:
 
 <!-- <p align="center"><img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="75%"/></p> -->
-<figure style="margin:0 auto; width:50%;">
-<img alt="input model setup" src="../figs/initial_geometry_with_labels.svg" width="100%">
-<figcaption><b>Fig.1:&emsp;</b> Input Model's Geometry.</figcaption>
+<figure style="margin:0 auto; width:300px">
+<img alt="input model setup" src="../figs/initial_geometry_with_labels.svg">
+<figcaption><b>Fig 1:&emsp;</b> Input Model's Geometry.</figcaption>
 </figure>
 
 
@@ -24,7 +24,6 @@ larger body absorbs part of that input energy as internal (strain) energy. The r
 the two bodies (the impactor and the deformable solid). The impactor reverses the direction of its motion, and the impact event ends when the two bodies
 ultimately lose contact. The impactor departs away (with no return) with a new terminal velocity, and endless elastic waves' propagations get established
 in the deformable solid.   
-
 
 Both the impactor and the deformable body are assumed to be solids in a state of "plane-strain". Therefore, they are modelled as 2D "shell"s in the xy-plane as
 a simplification. The y-axis is the vertical. The impactor is of size 0.2 by 0.1 m, while the deformable solid is 1.0 by 0.4 m. The two bodies are centre-aligned horizontally. See
